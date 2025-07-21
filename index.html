@@ -404,7 +404,7 @@
             scoreLow: "assets/audio/skor_perlu_latihan.mp3"
         };
 
-        const SHORT_SOUND_DURATION = 1500; // Durasi suara hewan dalam ms (1.5 detik)
+        const SHORT_SOUND_DURATION = 1500; // Durasi suara hewan dalam ms (2 detik)
         const CLICK_EFFECT_DELAY = 500; // Jeda sebelum suara hewan diputar (0.5 detik)
 
         let currentQuestionIndex = 0;
@@ -618,7 +618,7 @@
             resultsScreenEl.style.display = 'none';
             
             // Coba putar musik lagi saat game dimulai ulang
-            backgroundMusicEl.play().catch(e => {
+            backgroundMusicEl.play(0).catch(e => {
                 console.error("Autoplay of background music failed on playAgain:", e);
             });
             loadNewQuestion();
@@ -642,7 +642,7 @@
             backgroundMusicEl.volume = 0.3; // Volume default awal
             volumeSliderEl.value = 0.3; // Set slider to default volume
 
-            backgroundMusicEl.play().catch(e => {
+            backgroundMusicEl.play(0).catch(e => {
                 console.error("Autoplay of background music failed:", e);
                 // Jika autoplay gagal, tambahkan event listener ke dokumen
                 // untuk mencoba memutar musik pada interaksi pertama pengguna
@@ -654,7 +654,7 @@
         // Fungsi ini akan dipanggil saat ada interaksi pertama dari pengguna
         function enableBackgroundMusic() {
             if (backgroundMusicEl.paused) {
-                backgroundMusicEl.play().catch(e => {
+                backgroundMusicEl.play(0).catch(e => {
                     console.error("Failed to play background music on user interaction:", e);
                 });
             }
