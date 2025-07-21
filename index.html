@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -72,6 +72,52 @@
             margin-bottom: 25px;
             font-size: 2.8em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .volume-control {
+            position: absolute; /* Posisikan relatif terhadap game-container */
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10; /* Pastikan di atas elemen lain */
+        }
+
+        .volume-control label {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .volume-control input[type="range"] {
+            -webkit-appearance: none;
+            width: 100px;
+            height: 8px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: opacity .2s;
+        }
+
+        .volume-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .volume-control input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .current-question-info {
@@ -211,6 +257,7 @@
             background-color: #f9f9f9;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative; /* Penting untuk overflow */
         }
 
         .fact-item h3 {
@@ -222,16 +269,25 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            /* Perbaikan agar teks di h3 tidak terpotong */
+            word-wrap: break-word; /* Memastikan kata panjang bisa pecah baris */
+            overflow-wrap: break-word; /* Standar modern */
+            max-width: calc(100% - 100px); /* Beri ruang untuk tombol Dengar Fakta */
+            line-height: 1.2; /* Tingkatkan line-height jika perlu */
         }
 
         .fact-item h3 .fact-emoji {
             font-size: 1.2em;
+            flex-shrink: 0; /* Pastikan emoji tidak menyusut */
         }
 
         .fact-item p {
             font-size: 1.1em;
             line-height: 1.6;
             color: #555;
+            /* Pastikan paragraf tidak terpotong */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .read-fact-button {
@@ -243,7 +299,8 @@
             font-size: 0.9em;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-left: 10px; /* Jarak dari emoji */
+            margin-left: auto; /* Dorong ke kanan */
+            flex-shrink: 0; /* Pastikan tombol tidak menyusut */
         }
 
         .read-fact-button:hover {
@@ -270,15 +327,27 @@
             }
             .fact-item h3 {
                 font-size: 1.4em;
+                max-width: calc(100% - 80px); /* Sesuaikan ruang tombol di mobile */
             }
             .fact-item p {
                 font-size: 1em;
+            }
+            .volume-control {
+                top: 10px;
+                right: 10px;
+                flex-direction: column; /* Vertikal di layar kecil */
+                align-items: flex-end;
             }
         }
     </style>
 </head>
 <body>
     <div class="game-container">
+        <div class="volume-control">
+            <label for="volumeSlider">Musik:</label>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3">
+        </div>
+
         <div id="gameScreen">
             <h1>Tebak Suara Hewan! 🐾</h1>
             <div class="current-question-info" id="questionInfo">Pertanyaan 1 dari 10</div>
@@ -307,7 +376,9 @@
     <audio id="gameSound"></audio>
     <audio id="feedbackSound"></audio>
     <audio id="factSound"></audio>
-    <audio id="clickEffectSound"></audio> <script>
+    <audio id="clickEffectSound"></audio>
+
+    <script>
         const animals = [
             { name: "singa", emoji: "🦁", sound: "assets/audio/lion.mp3", fact: "Singa jantan punya surai lebat yang melindunginya saat berkelahi.", factSound: "assets/audio/fakta_singa.mp3" },
             { name: "anjing", emoji: "🐶", sound: "assets/audio/dog.mp3", fact: "Hidung anjing sangat sensitif, bisa mencium bau yang tidak terdeteksi manusia.", factSound: "assets/audio/fakta_anjing.mp3" },
@@ -347,6 +418,7 @@
         const feedbackSoundEl = document.getElementById('feedbackSound'); // Untuk suara feedback benar/salah
         const factSoundEl = document.getElementById('factSound'); // Untuk suara fakta hewan
         const clickEffectSoundEl = document.getElementById('clickEffectSound'); // Untuk efek klik
+        const volumeSliderEl = document.getElementById('volumeSlider'); // Slider volume
 
         const feedbackEl = document.getElementById('feedback');
         const scoreEl = document.getElementById('score');
@@ -551,12 +623,26 @@
         // Event listener untuk tanda tanya agar bisa diklik untuk memutar suara
         questionMarkDisplayEl.addEventListener('click', playAnimalSoundWithEffect);
 
+        // Event listener untuk slider volume
+        volumeSliderEl.addEventListener('input', (event) => {
+            backgroundMusicEl.volume = event.target.value;
+        });
+
         // Inisialisasi game saat halaman dimuat
         document.addEventListener('DOMContentLoaded', () => {
             backgroundMusicEl.src = gameSounds.backgroundMusic;
-            backgroundMusicEl.volume = 0.3; // Atur volume musik latar agar tidak terlalu keras
-            backgroundMusicEl.play().catch(e => console.error("Error playing background music:", e));
+            backgroundMusicEl.volume = 0.3; // Volume default awal
+            volumeSliderEl.value = 0.3; // Set slider to default volume
 
+            // Penting: Auto-play bisa diblokir oleh browser.
+            // Kita coba play di sini, dan jika gagal, instruksikan user.
+            backgroundMusicEl.play().catch(e => {
+                console.error("Autoplay of background music failed:", e);
+                // Opsional: tampilkan pesan ke pengguna untuk mengklik sesuatu
+                // agar musik bisa dimainkan. Namun, karena game ini interaktif,
+                // klik pertama biasanya akan membuka blokir autoplay.
+            });
+            
             gameSoundEl.src = gameSounds.instruction;
             gameSoundEl.play().catch(e => console.error("Error playing instruction sound:", e));
             
