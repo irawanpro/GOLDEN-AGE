@@ -160,12 +160,46 @@
             transform: scale(1.1);
         }
 
-        .instructions {
-            font-style: italic;
+        .instructions-container { /* Kontainer baru untuk teks dan tombol instruksi */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 25px;
+            gap: 10px; /* Jarak antara teks dan tombol */
+        }
+
+        .instructions-text {
+            font-style: italic;
             color: #555;
             font-size: 1.1em;
+            margin: 0; /* Hapus margin default p */
         }
+
+        .instruction-button {
+            background-color: #1E90FF; /* Warna biru */
+            color: white;
+            border: none;
+            border-radius: 50%; /* Bentuk lingkaran */
+            width: 30px; /* Ukuran tombol */
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .instruction-button:hover {
+            background-color: #007BFF;
+            transform: scale(1.05);
+        }
+
+        .instruction-button:active {
+            transform: scale(0.95);
+        }
+
 
         .choices-container {
             display: grid;
@@ -338,6 +372,10 @@
                 flex-direction: column; /* Vertikal di layar kecil */
                 align-items: flex-end;
             }
+            .instructions-container {
+                flex-direction: column; /* Tumpuk vertikal di mobile */
+                gap: 5px;
+            }
         }
     </style>
 </head>
@@ -353,7 +391,12 @@
             <div class="current-question-info" id="questionInfo">Pertanyaan 1 dari 10</div>
             <div class="score-display">Skor: <span id="score">0</span></div>
             <div class="question-mark-display" id="questionMarkDisplay">?</div>
-            <p class="instructions" id="instructionsText">Klik tanda tanya untuk mendengar suaranya. Lalu, pilih emoji hewan yang benar!</p>
+            
+            <div class="instructions-container">
+                <p class="instructions-text" id="instructionsText">Klik tanda tanya untuk mendengar suaranya. Lalu, pilih emoji hewan yang benar!</p>
+                <button class="instruction-button" id="playInstructionSound">🔊</button>
+            </div>
+            
             <div class="choices-container" id="choicesContainer">
                 </div>
             <div id="feedback"></div>
@@ -384,9 +427,6 @@
         // ====================================================================
 
         // --- 1. MENAMBAH/MENGUBAH HEWAN (PERTANYAAN) DAN FAKTA ---
-        // Anda bisa menambahkan, mengubah, atau menghapus data hewan di array 'animals' ini.
-        // Setiap objek di dalam array mewakili satu pertanyaan/hewan.
-        // Pastikan Anda memiliki file audio yang sesuai di folder 'assets/audio/'.
         const animals = [
             { name: "singa", emoji: "🦁", sound: "assets/audio/lion.mp3", fact: "Singa jantan punya surai lebat yang melindunginya saat berkelahi.", factSound: "assets/audio/fakta_singa.mp3" },
             { name: "anjing", emoji: "🐶", sound: "assets/audio/dog.mp3", fact: "Hidung anjing sangat sensitif, bisa mencium bau yang tidak terdeteksi manusia.", factSound: "assets/audio/fakta_anjing.mp3" },
@@ -404,23 +444,20 @@
         ];
 
         // --- 2. MENGATUR JALUR SUARA GAME UTAMA DAN UMPAN BALIK ---
-        // Anda dapat mengubah jalur file audio untuk suara latar, efek klik, instruksi, dan umpan balik skor.
         const gameSounds = {
-            backgroundMusic: "assets/audio/background_music.mp3", // Musik latar game
-            clickEffect: "assets/audio/click.mp3",               // Efek suara saat klik tanda tanya
-            instruction: "assets/audio/instruksi_tebak_suara.mp3", // Suara instruksi awal
-            correctFeedback: "assets/audio/benar_sekali.mp3",     // Suara jika jawaban benar
-            wrongFeedback: "assets/audio/coba_lagi.mp3",          // Suara jika jawaban salah
-            scoreHigh: "assets/audio/skor_hebat.mp3",             // Suara untuk skor tinggi di akhir game
-            scoreMedium: "assets/audio/skor_lumayan.mp3",         // Suara untuk skor sedang di akhir game
-            scoreLow: "assets/audio/skor_perlu_latihan.mp3"       // Suara untuk skor rendah di akhir game
-            // Jika Anda ingin mengganti file suara ini, pastikan jalur baru benar.
+            backgroundMusic: "assets/audio/background_music.mp3",
+            clickEffect: "assets/audio/click.mp3",
+            instruction: "assets/audio/instruksi_tebak_suara.mp3", // Suara instruksi
+            correctFeedback: "assets/audio/benar_sekali.mp3",
+            wrongFeedback: "assets/audio/coba_lagi.mp3",
+            scoreHigh: "assets/audio/skor_hebat.mp3",
+            scoreMedium: "assets/audio/skor_lumayan.mp3",
+            scoreLow: "assets/audio/skor_perlu_latihan.mp3"
         };
 
         // --- 3. PENGATURAN DURASI SUARA DAN JEDA ---
-        // Ubah nilai ini jika Anda ingin suara hewan atau jeda efek berbeda.
-        const SHORT_SOUND_DURATION = 3000; // Durasi suara hewan dalam milidetik (3000ms = 3 detik)
-        const CLICK_EFFECT_DELAY = 1500;     // Jeda sebelum suara hewan diputar setelah efek klik (1500ms = 1.5 detik)
+        const SHORT_SOUND_DURATION = 1500;
+        const CLICK_EFFECT_DELAY = 500;
 
         // Variabel Status Game (JANGAN UBAH INI KECUALI ANDA PAHAM BETUL)
         let currentQuestionIndex = 0;
@@ -439,7 +476,10 @@
         const feedbackEl = document.getElementById('feedback');
         const scoreEl = document.getElementById('score');
         const choicesContainerEl = document.getElementById('choicesContainer');
-        const instructionsTextEl = document.getElementById('instructionsText');
+        // --- Referensi Baru untuk Elemen Instruksi ---
+        const instructionsTextEl = document.getElementById('instructionsText'); 
+        const playInstructionSoundBtn = document.getElementById('playInstructionSound'); // Tombol instruksi
+        // --- Akhir Referensi Baru ---
         const questionInfoEl = document.getElementById('questionInfo');
         const gameScreenEl = document.getElementById('gameScreen');
         const resultsScreenEl = document.getElementById('resultsScreen');
@@ -472,23 +512,19 @@
             questionInfoEl.textContent = `Pertanyaan ${currentQuestionIndex + 1} dari ${answeredQuestions.length}`;
 
             generateChoices(currentAnimal);
-            instructionsTextEl.textContent = 'Klik tanda tanya untuk mendengar suaranya. Lalu, pilih emoji hewan yang benar!';
+            // Teks instruksi sekarang ada di elemen p dengan ID 'instructionsText'
+            // instructionsTextEl.textContent = 'Klik tanda tanya untuk mendengar suaranya. Lalu, pilih emoji hewan yang benar!';
         }
 
         // --- 4. PEMBUATAN PILIHAN JAWABAN (KOTAK/TOMBOL) SECARA DINAMIS ---
-        // Fungsi ini secara otomatis membuat tombol-tombol emoji jawaban.
-        // Jika Anda ingin mengubah tampilan atau jumlah pilihan, Anda bisa memodifikasi logika di sini.
-        // Saat ini, ia mengambil 3 pilihan salah acak dan 1 pilihan benar.
         function generateChoices(correctAnimal) {
-            choicesContainerEl.innerHTML = ''; // Bersihkan pilihan sebelumnya
+            choicesContainerEl.innerHTML = '';
 
             let choiceAnimals = animals.filter(a => a.name !== correctAnimal.name);
             shuffleArray(choiceAnimals);
 
-            // Ambil 3 pilihan salah acak. Jika kurang dari 3 hewan lain, ambil yang ada.
             const selectedWrongChoices = choiceAnimals.slice(0, Math.min(3, animals.length - 1));
             
-            // Gabungkan pilihan benar dan yang salah, lalu acak urutannya
             let choices = [...selectedWrongChoices, correctAnimal];
             shuffleArray(choices);
 
@@ -563,8 +599,6 @@
         }
 
         // --- 5. LOGIKA AKHIR GAME DAN TAMPILAN FAKTA ---
-        // Fungsi ini mengelola tampilan hasil akhir dan pembuatan "kotak" fakta hewan.
-        // Jika Anda ingin mengubah cara fakta ditampilkan, ini adalah tempatnya.
         async function endGame() {
             backgroundMusicEl.pause();
             gameScreenEl.style.display = 'none';
@@ -590,8 +624,8 @@
             gameSoundEl.src = scoreFeedbackSound;
             await gameSoundEl.play().catch(e => console.error("Error playing score sound:", e));
 
-            factsContainerEl.innerHTML = ''; // Bersihkan fakta sebelumnya
-            const shuffledFacts = shuffleArray([...animals]); // Acak urutan fakta
+            factsContainerEl.innerHTML = '';
+            const shuffledFacts = shuffleArray([...animals]);
 
             for (const animal of shuffledFacts) {
                 const factItem = document.createElement('div');
@@ -623,7 +657,6 @@
             gameScreenEl.style.display = 'block';
             resultsScreenEl.style.display = 'none';
             
-            // Coba putar musik lagi saat game dimulai ulang
             backgroundMusicEl.play().catch(e => {
                 console.error("Autoplay of background music failed on playAgain:", e);
             });
@@ -642,49 +675,52 @@
         // PENGATURAN AWAL GAME (Penting untuk Autoplay Musik)
         // =========================================================
 
-        // Fungsi ini akan dipanggil untuk mencoba memutar musik latar
         function tryPlayBackgroundMusic() {
             backgroundMusicEl.src = gameSounds.backgroundMusic;
-            backgroundMusicEl.volume = 0.3; // Volume default awal
-            volumeSliderEl.value = 0.3;     // Set slider ke volume default
+            backgroundMusicEl.volume = 0.3;
+            volumeSliderEl.value = 0.3;
             
-            // --- ATUR WAKTU MULAI MUSIK LATAR DI SINI ---
-            // Ganti angka 0 dengan detik yang Anda inginkan (misal: 10 untuk detik ke-10)
-            backgroundMusicEl.currentTime = 0; // Mulai dari awal (detik 0)
-            // ---------------------------------------------
+            backgroundMusicEl.currentTime = 0; 
 
             backgroundMusicEl.play().catch(e => {
                 console.error("Autoplay of background music failed:", e);
-                // Jika autoplay gagal, tambahkan event listener ke dokumen
-                // untuk mencoba memutar musik pada interaksi pertama pengguna
                 document.body.addEventListener('click', enableBackgroundMusic, { once: true });
                 document.body.addEventListener('touchend', enableBackgroundMusic, { once: true });
             });
         }
 
-        // Fungsi ini akan dipanggil saat ada interaksi pertama dari pengguna (jika autoplay awal diblokir)
         function enableBackgroundMusic() {
             if (backgroundMusicEl.paused) {
                 backgroundMusicEl.play().catch(e => {
                     console.error("Failed to play background music on user interaction:", e);
                 });
             }
-            // Hapus event listener agar tidak terus-menerus mencoba setelah diaktifkan
             document.body.removeEventListener('click', enableBackgroundMusic);
             document.body.removeEventListener('touchend', enableBackgroundMusic);
         }
 
-        // Inisialisasi game saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', () => {
-            tryPlayBackgroundMusic(); // Coba putar musik latar segera
-            
-            // Putar suara instruksi awal game
+        // --- MENGATUR TOMBOL SUARA INSTRUKSI ---
+        // Fungsi untuk memutar suara instruksi
+        function playInstructionSound() {
             gameSoundEl.src = gameSounds.instruction;
             gameSoundEl.play().catch(e => console.error("Error playing instruction sound:", e));
+        }
+
+        // Event listener untuk tombol suara instruksi
+        playInstructionSoundBtn.addEventListener('click', playInstructionSound);
+        // --- Akhir Pengaturan Tombol Suara Instruksi ---
+
+
+        // Inisialisasi game saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            tryPlayBackgroundMusic();
             
-            // Siapkan urutan pertanyaan untuk game pertama
+            // HAPUS BARIS INI: gameSoundEl.src = gameSounds.instruction;
+            // HAPUS BARIS INI: gameSoundEl.play().catch(e => console.error("Error playing instruction sound:", e));
+            // Suara instruksi sekarang akan diputar saat tombolnya diklik.
+            
             answeredQuestions = shuffleArray([...animals]); 
-            loadNewQuestion(); // Muat pertanyaan pertama
+            loadNewQuestion();
         });
     </script>
 </body>
