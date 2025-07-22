@@ -379,6 +379,14 @@
     <audio id="clickEffectSound"></audio>
 
     <script>
+        // ====================================================================
+        // PANDUAN PEMELIHARAAN KODE
+        // ====================================================================
+
+        // --- 1. MENAMBAH/MENGUBAH HEWAN (PERTANYAAN) DAN FAKTA ---
+        // Anda bisa menambahkan, mengubah, atau menghapus data hewan di array 'animals' ini.
+        // Setiap objek di dalam array mewakili satu pertanyaan/hewan.
+        // Pastikan Anda memiliki file audio yang sesuai di folder 'assets/audio/'.
         const animals = [
             { name: "singa", emoji: "🦁", sound: "assets/audio/lion.mp3", fact: "Singa jantan punya surai lebat yang melindunginya saat berkelahi.", factSound: "assets/audio/fakta_singa.mp3" },
             { name: "anjing", emoji: "🐶", sound: "assets/audio/dog.mp3", fact: "Hidung anjing sangat sensitif, bisa mencium bau yang tidak terdeteksi manusia.", factSound: "assets/audio/fakta_anjing.mp3" },
@@ -390,49 +398,56 @@
             { name: "kuda", emoji: "🐎", sound: "assets/audio/horse.mp3", fact: "Kuda bisa tidur sambil berdiri, tapi mereka juga butuh berbaring untuk tidur nyenyak.", factSound: "assets/audio/fakta_kuda.mp3" },
             { name: "monyet", emoji: "🐒", sound: "assets/audio/monkey.mp3", fact: "Monyet menggunakan ekornya untuk menjaga keseimbangan dan bahkan memegang sesuatu.", factSound: "assets/audio/fakta_monyet.mp3" },
             { name: "burung", emoji: "🐦", sound: "assets/audio/bird.mp3", fact: "Ada lebih dari 10.000 jenis burung di dunia!", factSound: "assets/audio/fakta_burung.mp3" }
-            // Tambahkan lebih banyak hewan di sini! Pastikan ada file suara hewan dan file suara fakta yang sesuai!
+            // CONTOH UNTUK MENAMBAH HEWAN BARU:
+            // , { name: "bebek", emoji: "🦆", sound: "assets/audio/duck.mp3", fact: "Bebek punya kaki berselaput untuk berenang.", factSound: "assets/audio/fakta_bebek.mp3" }
+            // Pastikan Anda memiliki file: assets/audio/duck.mp3 dan assets/audio/fakta_bebek.mp3
         ];
 
+        // --- 2. MENGATUR JALUR SUARA GAME UTAMA DAN UMPAN BALIK ---
+        // Anda dapat mengubah jalur file audio untuk suara latar, efek klik, instruksi, dan umpan balik skor.
         const gameSounds = {
-            backgroundMusic: "assets/audio/background_music.mp3",
-            clickEffect: "assets/audio/click.mp3", // Efek suara klik
-            instruction: "assets/audio/instruksi_tebak_suara.mp3",
-            correctFeedback: "assets/audio/benar_sekali.mp3",
-            wrongFeedback: "assets/audio/coba_lagi.mp3",
-            scoreHigh: "assets/audio/skor_hebat.mp3",
-            scoreMedium: "assets/audio/skor_lumayan.mp3",
-            scoreLow: "assets/audio/skor_perlu_latihan.mp3"
+            backgroundMusic: "assets/audio/background_music.mp3", // Musik latar game
+            clickEffect: "assets/audio/click.mp3",               // Efek suara saat klik tanda tanya
+            instruction: "assets/audio/instruksi_tebak_suara.mp3", // Suara instruksi awal
+            correctFeedback: "assets/audio/benar_sekali.mp3",     // Suara jika jawaban benar
+            wrongFeedback: "assets/audio/coba_lagi.mp3",          // Suara jika jawaban salah
+            scoreHigh: "assets/audio/skor_hebat.mp3",             // Suara untuk skor tinggi di akhir game
+            scoreMedium: "assets/audio/skor_lumayan.mp3",         // Suara untuk skor sedang di akhir game
+            scoreLow: "assets/audio/skor_perlu_latihan.mp3"       // Suara untuk skor rendah di akhir game
+            // Jika Anda ingin mengganti file suara ini, pastikan jalur baru benar.
         };
 
-        const SHORT_SOUND_DURATION = 1500; // Durasi suara hewan dalam ms (2 detik)
-        const CLICK_EFFECT_DELAY = 500; // Jeda sebelum suara hewan diputar (0.5 detik)
+        // --- 3. PENGATURAN DURASI SUARA DAN JEDA ---
+        // Ubah nilai ini jika Anda ingin suara hewan atau jeda efek berbeda.
+        const SHORT_SOUND_DURATION = 1500; // Durasi suara hewan dalam milidetik (1500ms = 1.5 detik)
+        const CLICK_EFFECT_DELAY = 500;     // Jeda sebelum suara hewan diputar setelah efek klik (500ms = 0.5 detik)
 
+        // Variabel Status Game (JANGAN UBAH INI KECUALI ANDA PAHAM BETUL)
         let currentQuestionIndex = 0;
         let score = 0;
-        let choicesEnabled = true; // Untuk mengontrol apakah tombol bisa diklik
-        let answeredQuestions = []; // Untuk melacak urutan pertanyaan yang sudah dijawab
+        let choicesEnabled = true;
+        let answeredQuestions = [];
 
+        // Referensi Elemen HTML (JANGAN UBAH INI KECUALI ANDA MENGUBAH ID HTML)
         const questionMarkDisplayEl = document.getElementById('questionMarkDisplay');
         const backgroundMusicEl = document.getElementById('backgroundMusic');
-        const gameSoundEl = document.getElementById('gameSound'); // Untuk suara hewan dan instruksi
-        const feedbackSoundEl = document.getElementById('feedbackSound'); // Untuk suara feedback benar/salah
-        const factSoundEl = document.getElementById('factSound'); // Untuk suara fakta hewan
-        const clickEffectSoundEl = document.getElementById('clickEffectSound'); // Untuk efek klik
-        const volumeSliderEl = document.getElementById('volumeSlider'); // Slider volume
-
+        const gameSoundEl = document.getElementById('gameSound');
+        const feedbackSoundEl = document.getElementById('feedbackSound');
+        const factSoundEl = document.getElementById('factSound');
+        const clickEffectSoundEl = document.getElementById('clickEffectSound');
+        const volumeSliderEl = document.getElementById('volumeSlider');
         const feedbackEl = document.getElementById('feedback');
         const scoreEl = document.getElementById('score');
         const choicesContainerEl = document.getElementById('choicesContainer');
         const instructionsTextEl = document.getElementById('instructionsText');
-        const questionInfoEl = document.getElementById('questionInfo'); // Untuk nomor slide
-
+        const questionInfoEl = document.getElementById('questionInfo');
         const gameScreenEl = document.getElementById('gameScreen');
         const resultsScreenEl = document.getElementById('resultsScreen');
         const finalScoreEl = document.getElementById('finalScore');
         const totalQuestionsEl = document.getElementById('totalQuestions');
         const factsContainerEl = document.getElementById('factsContainer');
 
-        // Fungsi untuk mengocok array (Fisher-Yates shuffle)
+        // Fungsi Utilitas (JANGAN UBAH INI KECUALI ANDA TAHU ALASANNYA)
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -441,56 +456,55 @@
             return array;
         }
 
-        // Fungsi untuk memuat pertanyaan baru
         function loadNewQuestion() {
             if (currentQuestionIndex >= answeredQuestions.length) {
                 endGame();
                 return;
             }
 
-            choicesEnabled = true; // Aktifkan kembali tombol
-            feedbackEl.textContent = ''; // Kosongkan feedback
-            feedbackEl.className = ''; // Hapus kelas feedback
+            choicesEnabled = true;
+            feedbackEl.textContent = '';
+            feedbackEl.className = '';
 
             const currentAnimal = answeredQuestions[currentQuestionIndex];
-            questionMarkDisplayEl.textContent = '?'; // Tampilkan tanda tanya
+            questionMarkDisplayEl.textContent = '?';
             
-            // Update nomor slide
             questionInfoEl.textContent = `Pertanyaan ${currentQuestionIndex + 1} dari ${answeredQuestions.length}`;
 
             generateChoices(currentAnimal);
             instructionsTextEl.textContent = 'Klik tanda tanya untuk mendengar suaranya. Lalu, pilih emoji hewan yang benar!';
         }
 
-        // Fungsi untuk membuat tombol pilihan jawaban emoji
+        // --- 4. PEMBUATAN PILIHAN JAWABAN (KOTAK/TOMBOL) SECARA DINAMIS ---
+        // Fungsi ini secara otomatis membuat tombol-tombol emoji jawaban.
+        // Jika Anda ingin mengubah tampilan atau jumlah pilihan, Anda bisa memodifikasi logika di sini.
+        // Saat ini, ia mengambil 3 pilihan salah acak dan 1 pilihan benar.
         function generateChoices(correctAnimal) {
             choicesContainerEl.innerHTML = ''; // Bersihkan pilihan sebelumnya
 
             let choiceAnimals = animals.filter(a => a.name !== correctAnimal.name);
             shuffleArray(choiceAnimals);
 
-            // Ambil 3 pilihan salah acak, pastikan cukup hewan tersedia
-            const selectedWrongChoices = choiceAnimals.slice(0, Math.min(3, animals.length - 1)); // Ambil maksimal 3 pilihan salah
+            // Ambil 3 pilihan salah acak. Jika kurang dari 3 hewan lain, ambil yang ada.
+            const selectedWrongChoices = choiceAnimals.slice(0, Math.min(3, animals.length - 1));
             
-            // Pastikan ada 4 pilihan total (correct + up to 3 wrong)
+            // Gabungkan pilihan benar dan yang salah, lalu acak urutannya
             let choices = [...selectedWrongChoices, correctAnimal];
-            shuffleArray(choices); // Acak urutan pilihan
+            shuffleArray(choices);
 
             choices.forEach(animal => {
                 const button = document.createElement('button');
-                button.textContent = animal.emoji; // Tampilkan emoji di tombol
+                button.textContent = animal.emoji;
                 button.classList.add('choice-button');
                 button.onclick = () => checkAnswer(animal, correctAnimal, button);
                 choicesContainerEl.appendChild(button);
             });
         }
 
-        // Fungsi untuk memutar suara hewan dengan efek klik
         function playAnimalSoundWithEffect() {
             clickEffectSoundEl.src = gameSounds.clickEffect;
             clickEffectSoundEl.play().catch(e => console.error("Error playing click sound:", e));
 
-            // Optional: Tambahkan sedikit feedback visual saat tanda tanya ditekan
             questionMarkDisplayEl.style.transform = 'scale(1.1)';
             setTimeout(() => questionMarkDisplayEl.style.transform = 'scale(1)', 200);
 
@@ -499,22 +513,19 @@
                 gameSoundEl.src = currentAnimal.sound;
                 gameSoundEl.play().catch(e => console.error("Error playing animal sound:", e));
 
-                // Hentikan suara hewan setelah durasi pendek
                 setTimeout(() => {
                     gameSoundEl.pause();
-                    gameSoundEl.currentTime = 0; // Reset ke awal
+                    gameSoundEl.currentTime = 0;
                 }, SHORT_SOUND_DURATION);
 
-            }, CLICK_EFFECT_DELAY); // Jeda sebelum suara hewan diputar
+            }, CLICK_EFFECT_DELAY);
         }
 
-        // Fungsi untuk memeriksa jawaban
         function checkAnswer(selectedAnimal, correctAnimal, clickedButton) {
-            if (!choicesEnabled) return; // Jangan izinkan klik jika tombol dinonaktifkan
+            if (!choicesEnabled) return;
 
-            choicesEnabled = false; // Nonaktifkan tombol setelah satu klik
+            choicesEnabled = false;
 
-            // Hapus kelas feedback dari semua tombol sebelumnya
             const allButtons = choicesContainerEl.querySelectorAll('.choice-button');
             allButtons.forEach(btn => {
                 btn.classList.remove('correct-feedback', 'wrong-feedback');
@@ -530,7 +541,7 @@
                 scoreEl.textContent = score;
                 currentQuestionIndex++;
                 setTimeout(() => {
-                    loadNewQuestion(); // Lanjutkan setelah 1.5 detik
+                    loadNewQuestion();
                 }, 1500);
             } else {
                 feedbackEl.textContent = `Salah. Jawaban yang benar adalah ${correctAnimal.name.charAt(0).toUpperCase() + correctAnimal.name.slice(1)}. 😞`;
@@ -539,29 +550,29 @@
                 feedbackSoundEl.play();
                 clickedButton.classList.add('wrong-feedback');
 
-                // Tampilkan jawaban yang benar juga
                 allButtons.forEach(btn => {
                     if (btn.textContent === correctAnimal.emoji) {
                         btn.classList.add('correct-feedback');
                     }
                 });
-                currentQuestionIndex++; // Pindah ke pertanyaan berikutnya meskipun salah
+                currentQuestionIndex++;
                 setTimeout(() => {
-                    loadNewQuestion(); // Lanjutkan setelah 2.5 detik (lebih lama untuk melihat jawaban benar)
+                    loadNewQuestion();
                 }, 2500);
             }
         }
 
-        // Fungsi untuk mengakhiri game dan menampilkan hasil
+        // --- 5. LOGIKA AKHIR GAME DAN TAMPILAN FAKTA ---
+        // Fungsi ini mengelola tampilan hasil akhir dan pembuatan "kotak" fakta hewan.
+        // Jika Anda ingin mengubah cara fakta ditampilkan, ini adalah tempatnya.
         async function endGame() {
-            backgroundMusicEl.pause(); // Hentikan musik latar
+            backgroundMusicEl.pause();
             gameScreenEl.style.display = 'none';
             resultsScreenEl.style.display = 'block';
 
             finalScoreEl.textContent = score;
             totalQuestionsEl.textContent = animals.length;
 
-            // Putar suara umpan balik skor
             let scoreFeedbackSound;
             let scoreText;
             if (score === animals.length) {
@@ -574,16 +585,13 @@
                 scoreFeedbackSound = gameSounds.scoreLow;
                 scoreText = `Jangan menyerah! Kamu sudah berusaha, mari kita belajar lagi.`;
             }
-            feedbackEl.textContent = scoreText; // Tampilkan teks umpan balik
-            feedbackEl.className = 'feedback-final-score'; // Kelas khusus jika perlu gaya tambahan
+            feedbackEl.textContent = scoreText;
+            feedbackEl.className = 'feedback-final-score';
             gameSoundEl.src = scoreFeedbackSound;
             await gameSoundEl.play().catch(e => console.error("Error playing score sound:", e));
 
-            // Tampilkan dan putar fakta hewan satu per satu
             factsContainerEl.innerHTML = ''; // Bersihkan fakta sebelumnya
-
-            // Acak urutan fakta agar tidak monoton
-            const shuffledFacts = shuffleArray([...animals]);
+            const shuffledFacts = shuffleArray([...animals]); // Acak urutan fakta
 
             for (const animal of shuffledFacts) {
                 const factItem = document.createElement('div');
@@ -598,7 +606,6 @@
                 factsContainerEl.appendChild(factItem);
             }
 
-            // Tambahkan event listener untuk tombol "Dengar Fakta"
             const factButtons = document.querySelectorAll('.read-fact-button');
             factButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -608,17 +615,16 @@
             });
         }
 
-        // Fungsi untuk memulai ulang game dari layar hasil
         function playAgain() {
             score = 0;
             scoreEl.textContent = score;
             currentQuestionIndex = 0;
-            answeredQuestions = shuffleArray([...animals]); // Acak urutan pertanyaan untuk game baru
+            answeredQuestions = shuffleArray([...animals]);
             gameScreenEl.style.display = 'block';
             resultsScreenEl.style.display = 'none';
             
             // Coba putar musik lagi saat game dimulai ulang
-            backgroundMusicEl.play(0).catch(e => {
+            backgroundMusicEl.play().catch(e => {
                 console.error("Autoplay of background music failed on playAgain:", e);
             });
             loadNewQuestion();
@@ -633,16 +639,21 @@
         });
 
         // =========================================================
-        // Perbaikan Autoplay Musik Latar di Awal
+        // PENGATURAN AWAL GAME (Penting untuk Autoplay Musik)
         // =========================================================
 
-        // Fungsi ini akan dipanggil untuk mencoba memutar musik
+        // Fungsi ini akan dipanggil untuk mencoba memutar musik latar
         function tryPlayBackgroundMusic() {
             backgroundMusicEl.src = gameSounds.backgroundMusic;
             backgroundMusicEl.volume = 0.3; // Volume default awal
-            volumeSliderEl.value = 0.3; // Set slider to default volume
+            volumeSliderEl.value = 0.3;     // Set slider ke volume default
+            
+            // --- ATUR WAKTU MULAI MUSIK LATAR DI SINI ---
+            // Ganti angka 0 dengan detik yang Anda inginkan (misal: 10 untuk detik ke-10)
+            backgroundMusicEl.currentTime = 0; // Mulai dari awal (detik 0)
+            // ---------------------------------------------
 
-            backgroundMusicEl.play(0).catch(e => {
+            backgroundMusicEl.play().catch(e => {
                 console.error("Autoplay of background music failed:", e);
                 // Jika autoplay gagal, tambahkan event listener ke dokumen
                 // untuk mencoba memutar musik pada interaksi pertama pengguna
@@ -651,29 +662,29 @@
             });
         }
 
-        // Fungsi ini akan dipanggil saat ada interaksi pertama dari pengguna
+        // Fungsi ini akan dipanggil saat ada interaksi pertama dari pengguna (jika autoplay awal diblokir)
         function enableBackgroundMusic() {
             if (backgroundMusicEl.paused) {
-                backgroundMusicEl.play(0).catch(e => {
+                backgroundMusicEl.play().catch(e => {
                     console.error("Failed to play background music on user interaction:", e);
                 });
             }
-            // Hapus event listener agar tidak terus-menerus mencoba
+            // Hapus event listener agar tidak terus-menerus mencoba setelah diaktifkan
             document.body.removeEventListener('click', enableBackgroundMusic);
             document.body.removeEventListener('touchend', enableBackgroundMusic);
         }
 
         // Inisialisasi game saat halaman dimuat
         document.addEventListener('DOMContentLoaded', () => {
-            // Coba putar musik latar segera
-            tryPlayBackgroundMusic();
+            tryPlayBackgroundMusic(); // Coba putar musik latar segera
             
+            // Putar suara instruksi awal game
             gameSoundEl.src = gameSounds.instruction;
             gameSoundEl.play().catch(e => console.error("Error playing instruction sound:", e));
             
-            // Inisialisasi pertanyaan untuk game pertama
+            // Siapkan urutan pertanyaan untuk game pertama
             answeredQuestions = shuffleArray([...animals]); 
-            loadNewQuestion();
+            loadNewQuestion(); // Muat pertanyaan pertama
         });
     </script>
 </body>
