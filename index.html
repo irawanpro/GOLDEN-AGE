@@ -1107,5 +1107,26 @@
     checkFormValidity();
     showFooter(footerCardGrid);
   </script>
+
+<audio id="bg-audio" src="assets/bg-music.mp3" autoplay loop preload="auto"></audio>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("bg-audio");
+    audio.volume = 0.6;
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        const startAudio = () => {
+          audio.play();
+          window.removeEventListener("click", startAudio);
+          window.removeEventListener("touchstart", startAudio);
+        };
+        window.addEventListener("click", startAudio);
+        window.addEventListener("touchstart", startAudio);
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
