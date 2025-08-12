@@ -1,4 +1,3 @@
-<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -34,6 +33,1047 @@
         Anak ideal / kurang / obesitas
       </p>
     </div>
+
+    <div id="stimulasi-card" class="bg-white rounded-2xl p-8 flex flex-col items-center shadow-[0_8px_24px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-lg transition-shadow duration-300">
+      <i class="fas fa-lightbulb text-purple-500 text-6xl mb-6"></i>
+      <h2 class="font-extrabold text-xl text-black mb-1 text-center">
+        STIMULASI
+      </h2>
+      <p class="text-gray-500 text-center text-sm leading-tight max-w-[260px]">
+        Kegiatan Merangsang Kemampuan Dasar Anak
+      </p>
+    </div>
+
+    <div id="parenting-card" class="bg-white rounded-2xl p-8 flex flex-col items-center shadow-[0_8px_24px_rgba(0,0,0,0.05)] sm:col-span-1 cursor-pointer hover:shadow-lg transition-shadow duration-300">
+      <i class="fas fa-users text-yellow-500 text-6xl mb-6"></i>
+      <h2 class="font-extrabold text-xl text-black mb-1 text-center">
+        PARENTING
+      </h2>
+      <p class="text-gray-500 text-center text-sm leading-tight max-w-[260px]">
+        Tips & edukasi untuk orang tua dalam mendukung tumbuh kembang anak
+      </p>
+    </div>
+
+  </div>
+  <div id="footer-card-grid" class="mt-8 text-center text-gray-500 text-sm">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="data-form-page" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)]">
+    <button id="back-button" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali
+    </button>
+    <h2 class="text-2xl font-extrabold text-black mb-6 text-center">
+      Data Anak
+    </h2>
+    <form id="data-form">
+      <div class="mb-4">
+        <label for="nama_anak" class="block text-gray-700 font-bold mb-2">Nama Anak</label>
+        <input type="text" id="nama_anak" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan nama anak" required>
+      </div>
+      <div class="mb-4">
+        <label for="umur" class="block text-gray-700 font-bold mb-2">Umur (Bulan)</label>
+        <input type="number" id="umur" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan umur dalam bulan" required>
+      </div>
+      <div class="mb-4">
+        <label for="berat_badan" class="block text-gray-700 font-bold mb-2">Berat Badan (Kg)</label>
+        <input type="number" id="berat_badan" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan berat badan" required>
+      </div>
+      <div class="mb-4">
+        <label for="tinggi_badan" class="block text-gray-700 font-bold mb-2">Tinggi Badan (cm)</label>
+        <input type="number" id="tinggi_badan" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan tinggi badan" required>
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 font-bold mb-2">Jenis Kelamin</label>
+        <div class="flex items-center space-x-4">
+          <label class="inline-flex items-center">
+            <input type="radio" class="form-radio text-blue-600" name="jenis_kelamin" value="laki-laki" required>
+            <span class="ml-2 text-gray-700">Laki-laki</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="radio" class="form-radio text-pink-600" name="jenis_kelamin" value="perempuan">
+            <span class="ml-2 text-gray-700">Perempuan</span>
+          </label>
+        </div>
+      </div>
+      <div class="flex items-center justify-center">
+        <button id="submit-button" type="submit" class="bg-blue-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-not-allowed" disabled>
+          Kirim Data
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="footer-data-form" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+  
+  <div id="result-page" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)]">
+    <button id="back-to-home-from-result" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+    </button>
+    <div class="flex flex-col items-center justify-center">
+      <i class="fas fa-chart-bar text-green-500 text-6xl mb-4"></i>
+      <h2 class="text-2xl font-extrabold text-black mb-4 text-center">
+        HASIL
+      </h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      <div class="bg-gray-100 p-4 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors duration-200" data-kategori="bbu">
+        <h3 class="font-bold text-gray-800 mb-2">Berat Badan / Umur (BB/U)</h3>
+        <p class="text-lg font-semibold" id="bbu_hasil">...</p>
+      </div>
+      
+      <div class="bg-gray-100 p-4 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors duration-200" data-kategori="tbu">
+        <h3 class="font-bold text-gray-800 mb-2">Tinggi Badan / Umur (TB/U)</h3>
+        <p class="text-lg font-semibold" id="tbu_hasil">...</p>
+      </div>
+      
+      <div class="bg-gray-100 p-4 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors duration-200" data-kategori="bbtb">
+        <h3 class="font-bold text-gray-800 mb-2">Berat Badan / Tinggi Badan (BB/TB)</h3>
+        <p class="text-lg font-semibold" id="bbtb_hasil">...</p>
+      </div>
+      
+      <div class="bg-gray-100 p-4 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors duration-200" data-kategori="imtu">
+        <h3 class="font-bold text-gray-800 mb-2">Indeks Massa Tubuh / Umur (IMT/U)</h3>
+        <p class="text-lg font-semibold" id="imtu_hasil">...</p>
+      </div>
+    </div>
+  </div>
+  <div id="footer-result" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="gizi-options-page" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)] text-center">
+    <button id="back-to-home-from-gizi-options" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+    </button>
+    <i class="fas fa-apple-alt text-blue-500 text-6xl mb-4"></i>
+    <h2 class="text-2xl font-extrabold text-black mb-6">
+      Pilih Kategori Makanan Bergizi
+    </h2>
+    <div class="grid grid-cols-1 gap-4">
+      <button class="gizi-option bg-green-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-green-600 transition-colors duration-200" data-gizi="ideal">
+        Ideal
+      </button>
+      <button class="gizi-option bg-yellow-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-yellow-600 transition-colors duration-200" data-gizi="kurang">
+        Kurang
+      </button>
+      <button class="gizi-option bg-red-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-red-600 transition-colors duration-200" data-gizi="obesitas">
+        Obesitas
+      </button>
+    </div>
+  </div>
+  <div id="footer-gizi-options" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="age-options-page" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)] text-center">
+    <button id="back-to-gizi-options-from-age" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali
+    </button>
+    <i class="fas fa-calendar-alt text-orange-500 text-6xl mb-4"></i>
+    <h2 class="text-2xl font-extrabold text-black mb-6">
+      Pilih Rentang Usia
+    </h2>
+    <div class="grid grid-cols-1 gap-4">
+      <button class="age-option bg-gray-200 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-300 transition-colors duration-200" data-age="0-1 tahun">
+        0 - 1 Tahun
+      </button>
+      <button class="age-option bg-gray-200 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-300 transition-colors duration-200" data-age="2-5 tahun">
+        2 - 5 Tahun
+      </button>
+      <button class="age-option bg-gray-200 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-300 transition-colors duration-200" data-age="6-8 tahun">
+        6 - 8 Tahun
+      </button>
+      <button class="age-option bg-gray-200 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-300 transition-colors duration-200" data-age="9-15 tahun">
+        9 - 15 Tahun
+      </button>
+    </div>
+  </div>
+  <div id="footer-age-options" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="recipes-page" class="hidden max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)]">
+    <button id="back-to-age-options" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali ke Opsi Usia
+    </button>
+    <div class="flex flex-col items-center justify-center">
+      <i class="fas fa-apple-alt text-blue-500 text-6xl mb-4"></i>
+      <h2 id="recipes-title" class="text-2xl font-extrabold text-black mb-4 text-center">
+        Resep Makanan
+      </h2>
+    </div>
+
+    <div id="recipes-container">
+    </div>
+  </div>
+  <div id="footer-recipes" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="stimulasi-options-page" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)] text-center">
+    <button id="back-to-home-from-stimulasi-options" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+    </button>
+    <i class="fas fa-lightbulb text-purple-500 text-6xl mb-4"></i>
+    <h2 class="text-2xl font-extrabold text-black mb-6">
+      Pilih Kategori Stimulasi
+    </h2>
+    <div class="grid grid-cols-1 gap-4">
+      <button class="stimulasi-option bg-purple-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-purple-600 transition-colors duration-200" data-stimulasi="0-12">
+        STIMULASI ANAK UMUR 0-12 bulan
+      </button>
+      <button class="stimulasi-option bg-purple-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-purple-600 transition-colors duration-200" data-stimulasi="1-3">
+        STIMULASI ANAK UMUR 1-3 TAHUN
+      </button>
+      <button class="stimulasi-option bg-purple-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-purple-600 transition-colors duration-200" data-stimulasi="3-6">
+        STIMULASI ANAK UMUR 3-6 TAHUN
+      </button>
+    </div>
+  </div>
+  <div id="footer-stimulasi-options" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+  
+  <div id="stimulasi-page" class="hidden max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)]">
+    <button id="back-to-stimulasi-options" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali ke Opsi Stimulasi
+    </button>
+    <div class="flex flex-col items-center justify-center">
+      <i class="fas fa-lightbulb text-purple-500 text-6xl mb-4"></i>
+      <h2 id="stimulasi-title" class="text-2xl font-extrabold text-black mb-4 text-center">
+        Stimulasi Anak
+      </h2>
+    </div>
+    <div id="stimulasi-content-container" class="mt-6">
+    </div>
+  </div>
+  <div id="footer-stimulasi" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="parenting-options-page" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)] text-center">
+    <button id="back-to-home-from-parenting-options" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+    </button>
+    <i class="fas fa-users text-yellow-500 text-6xl mb-4"></i>
+    <h2 class="text-2xl font-extrabold text-black mb-6">
+      Pilih Usia Anak untuk Tips Parenting
+    </h2>
+    <div class="grid grid-cols-1 gap-4">
+      <button class="parenting-option bg-yellow-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-yellow-600 transition-colors duration-200" data-parenting-age="0-2">
+        0 - 2 Tahun
+      </button>
+      <button class="parenting-option bg-yellow-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-yellow-600 transition-colors duration-200" data-parenting-age="3-6">
+        3 - 6 Tahun
+      </button>
+      <button class="parenting-option bg-yellow-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-yellow-600 transition-colors duration-200" data-parenting-age="7-12">
+        7 - 12 Tahun
+      </button>
+    </div>
+  </div>
+  <div id="footer-parenting-options" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="parenting-page" class="hidden max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.05)]">
+    <button id="back-to-parenting-options" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali ke Opsi Usia
+    </button>
+    <div class="flex flex-col items-center justify-center">
+      <i class="fas fa-users text-yellow-500 text-6xl mb-4"></i>
+      <h2 id="parenting-title" class="text-2xl font-extrabold text-black mb-4 text-center">
+        Tips & Edukasi Parenting
+      </h2>
+    </div>
+    <div id="parenting-content-container" class="mt-6">
+    </div>
+  </div>
+  <div id="footer-parenting" class="mt-8 text-center text-gray-500 text-sm hidden">
+    Created on: Mamanya fatih dan rafasya
+  </div>
+
+  <div id="info-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 modal">
+    <div class="bg-white rounded-lg p-6 max-w-lg w-full shadow-xl">
+      <div class="flex justify-between items-center mb-4">
+        <h3 id="modal-title" class="text-xl font-bold text-gray-800"></h3>
+        <button id="close-modal" class="text-gray-500 hover:text-gray-800">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+      <p id="modal-content" class="text-gray-700 leading-relaxed"></p>
+    </div>
+  </div>
+
+  <script>
+    const usiaCard = document.getElementById('usia-card');
+    const resepCard = document.getElementById('resep-card');
+    const stimulasiCard = document.getElementById('stimulasi-card');
+    const parentingCard = document.getElementById('parenting-card');
+
+    const backButton = document.getElementById('back-button');
+    const backToHomeFromResult = document.getElementById('back-to-home-from-result');
+    const backToHomeFromGiziOptions = document.getElementById('back-to-home-from-gizi-options');
+    const backToGiziOptionsFromAge = document.getElementById('back-to-gizi-options-from-age');
+    const backToAgeOptionsButton = document.getElementById('back-to-age-options');
+    const backToHomeFromStimulasiOptions = document.getElementById('back-to-home-from-stimulasi-options');
+    const backToStimulasiOptionsButton = document.getElementById('back-to-stimulasi-options');
+    const backToHomeFromParentingOptions = document.getElementById('back-to-home-from-parenting-options');
+    const backToParentingOptionsButton = document.getElementById('back-to-parenting-options');
+    
+    const cardGridPage = document.getElementById('card-grid-page');
+    const dataFormPage = document.getElementById('data-form-page');
+    const resultPage = document.getElementById('result-page');
+    const giziOptionsPage = document.getElementById('gizi-options-page');
+    const ageOptionsPage = document.getElementById('age-options-page');
+    const recipesPage = document.getElementById('recipes-page');
+    const stimulasiOptionsPage = document.getElementById('stimulasi-options-page');
+    const stimulasiPage = document.getElementById('stimulasi-page');
+    const parentingOptionsPage = document.getElementById('parenting-options-page');
+    const parentingPage = document.getElementById('parenting-page');
+
+    const form = document.getElementById('data-form');
+    const submitButton = document.getElementById('submit-button');
+    const inputs = form.querySelectorAll('input');
+    const infoModal = document.getElementById('info-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+    const closeModalButton = document.getElementById('close-modal');
+    const recipesContainer = document.getElementById('recipes-container');
+    const recipesTitle = document.getElementById('recipes-title');
+    const stimulasiTitle = document.getElementById('stimulasi-title');
+    const stimulasiContentContainer = document.getElementById('stimulasi-content-container');
+    const parentingTitle = document.getElementById('parenting-title');
+    const parentingContentContainer = document.getElementById('parenting-content-container');
+    
+    // Elemen footer baru
+    const footerCardGrid = document.getElementById('footer-card-grid');
+    const footerDataForm = document.getElementById('footer-data-form');
+    const footerResult = document.getElementById('footer-result');
+    const footerGiziOptions = document.getElementById('footer-gizi-options');
+    const footerAgeOptions = document.getElementById('footer-age-options');
+    const footerRecipes = document.getElementById('footer-recipes');
+    const footerStimulasiOptions = document.getElementById('footer-stimulasi-options');
+    const footerStimulasi = document.getElementById('footer-stimulasi');
+    const footerParentingOptions = document.getElementById('footer-parenting-options');
+    const footerParenting = document.getElementById('footer-parenting');
+    
+    // Global variable to store the selected gizi category
+    let selectedGiziCategory = '';
+
+    // Data penjelasan dari riset yang valid (disederhanakan untuk demo)
+    const explanations = {
+        'Risiko Berat Badan Lebih': {
+            title: 'Risiko Berat Badan Lebih',
+            text: 'Ini menunjukkan berat badan anak melebihi standar normal untuk usianya. Faktor penyebabnya bisa termasuk pola makan yang tidak seimbang, asupan kalori berlebih, kurangnya aktivitas fisik, atau faktor genetik. Kondisi ini meningkatkan risiko obesitas dan penyakit di masa depan.'
+        },
+        'Tinggi': {
+            title: 'Tinggi',
+            text: 'Status ini menandakan tinggi badan anak berada di atas rata-rata untuk usianya. Biasanya ini disebabkan oleh faktor genetik atau pertumbuhan normal. Penting untuk memantau terus pertumbuhan anak agar tetap proporsional.'
+        },
+        'Gizi Kurang': {
+            title: 'Gizi Kurang',
+            text: 'Kategori ini menunjukkan berat badan anak tidak sebanding dengan tinggi badannya. Hal ini bisa disebabkan oleh asupan makanan yang tidak mencukupi, pola makan tidak sehat, atau masalah kesehatan. Kondisi ini memerlukan intervensi gizi untuk mencegah stunting dan masalah kesehatan lainnya.'
+        },
+        'Kurus': {
+            title: 'Kurus',
+            text: 'Status ini menunjukkan indeks massa tubuh anak lebih rendah dari standar normal untuk usianya. Penyebabnya bisa karena asupan gizi yang kurang, aktivitas fisik berlebih, atau masalah kesehatan. Perlu perhatian khusus untuk memastikan anak mendapatkan nutrisi yang cukup.'
+        },
+        'Normal': {
+            title: 'Normal',
+            text: 'Ini adalah hasil yang ideal. Ini menunjukkan pertumbuhan dan status gizi anak berada dalam batas normal sesuai usianya berdasarkan standar WHO. Tetap pertahankan pola makan sehat dan aktivitas fisik yang seimbang.'
+        },
+        // Tambahkan penjelasan tambahan untuk hasil simulasi lainnya
+        'Berat Badan Kurang': {
+            title: 'Berat Badan Kurang',
+            text: 'Berat badan anak berada di bawah standar normal untuk usianya. Hal ini dapat disebabkan oleh asupan makanan yang tidak memadai, penyakit, atau faktor genetik. Penting untuk berkonsultasi dengan ahli gizi untuk memastikan anak mendapatkan nutrisi yang cukup.'
+        },
+        'Pendek (Stunting)': {
+            title: 'Pendek (Stunting)',
+            text: 'Tinggi badan anak tidak mencapai standar normal untuk usianya. Stunting seringkali disebabkan oleh malnutrisi kronis, infeksi berulang, atau sanitasi yang buruk. Kondisi ini berdampak serius pada perkembangan otak dan fisik anak.'
+        },
+        'Gizi Baik (Normal)': {
+            title: 'Gizi Baik (Normal)',
+            text: 'Berat badan anak proporsional dengan tinggi badannya, menandakan status gizi yang baik. Teruslah pertahankan pola makan seimbang dan gaya hidup sehat untuk mendukung pertumbuhan optimal.'
+        },
+        'Gizi Lebih (Overweight)': {
+            title: 'Gizi Lebih (Overweight)',
+            text: 'Indeks massa tubuh anak lebih tinggi dari standar normal untuk usianya. Kondisi ini dapat menjadi tanda awal obesitas dan memerlukan penyesuaian pola makan serta peningkatan aktivitas fisik untuk mencegah risiko kesehatan di masa depan.'
+        },
+        'Obesitas': {
+            title: 'Obesitas',
+            text: 'Indeks massa tubuh anak sangat tinggi, melebihi batas normal yang dianjurkan. Obesitas pada anak meningkatkan risiko berbagai penyakit kronis. Penting untuk segera mengambil langkah-langkah penyesuaian gaya hidup dengan bimbingan ahli kesehatan.'
+        }
+    };
+    
+    // Data Resep yang Valid (diperbarui dengan emoji)
+    const allRecipes = {
+        ideal: [
+            // Resep untuk 0-1 tahun
+            { name: 'Bubur Ubi Jalar Halus', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dari ubi jalar kukus yang dihaluskan, kaya karbohidrat dan beta-karoten.', nutrition: 'Sumber energi, serat, dan vitamin A yang baik.', emoji: '🍠' },
+            { name: 'Puree Alpukat Pisang', category: 'MPASI', age: '0-1 tahun', description: 'Kombinasi alpukat dan pisang yang dihaluskan, kaya lemak sehat dan kalium.', nutrition: 'Lemak sehat untuk otak, kalium untuk otot dan saraf.', emoji: '🥑🍌' },
+            { name: 'Bubur Daging Sapi Bayam', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dengan daging sapi cincang dan bayam, sumber zat besi dan protein.', nutrition: 'Mencegah anemia, mendukung pertumbuhan otot.', emoji: '🥩🥬' },
+            { name: 'Bubur Hati Ayam Brokoli', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dengan hati ayam dan brokoli, kaya zat besi, vitamin, dan mineral.', nutrition: 'Meningkatkan sel darah merah dan daya tahan tubuh.', emoji: '🐔🥦' },
+            { name: 'Puree Wortel Labu Siam', category: 'MPASI', age: '0-1 tahun', description: 'Puree dari wortel dan labu siam kukus, kaya serat dan vitamin A.', nutrition: 'Baik untuk pencernaan dan kesehatan mata.', emoji: '🥕🎃' },
+            { name: 'Bubur Ikan Salmon', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dengan ikan salmon yang dikukus, sumber Omega-3 dan protein.', nutrition: 'Penting untuk perkembangan otak dan mata.', emoji: '🐟' },
+            { name: 'Bubur Kacang Hijau Asli', category: 'MPASI', age: '0-1 tahun', description: 'Bubur kacang hijau tanpa santan, kaya protein nabati.', nutrition: 'Sumber protein dan serat yang baik untuk bayi.', emoji: '🥣' },
+            { name: 'Tim Telur Tofu', category: 'MPASI', age: '0-1 tahun', description: 'Tim yang terbuat dari telur dan tahu sutra, tekstur lembut dan tinggi protein.', nutrition: 'Protein hewani dan nabati yang mudah diserap.', emoji: '🥚' },
+            { name: 'Puree Apel Pir', category: 'MPASI', age: '0-1 tahun', description: 'Puree buah apel dan pir yang dihaluskan, mengandung vitamin C dan serat.', nutrition: 'Meningkatkan imunitas dan melancarkan pencernaan.', emoji: '🍎🍐' },
+            { name: 'Bubur Oatmeal Kurma', category: 'MPASI', age: '0-1 tahun', description: 'Bubur oatmeal dengan kurma yang dihaluskan, sumber energi dan serat.', nutrition: 'Karbohidrat kompleks untuk energi dan serat untuk pencernaan.', emoji: '🥣' },
+
+            // Resep untuk 2-5 tahun
+            { name: 'Sup Ayam Sayuran', category: 'Lauk & Sayur', age: '2-5 tahun', description: 'Sup ayam bening dengan potongan wortel, kentang, dan buncis.', nutrition: 'Kaya protein, serat, vitamin A, dan C.', emoji: '🍲' },
+            { name: 'Nugget Ikan Lele Homemade', category: 'Lauk', age: '2-5 tahun', description: 'Nugget sehat dari daging ikan lele giling, tanpa pengawet.', nutrition: 'Sumber protein dan asam lemak Omega-3.', emoji: '🐟' },
+            { name: 'Tumis Brokoli dan Tahu', category: 'Lauk & Sayur', age: '2-5 tahun', description: 'Tumisan brokoli dan tahu yang mudah dicerna, kaya nutrisi.', nutrition: 'Brokoli kaya vitamin K & C, tahu sumber protein nabati.', emoji: '🥦' },
+            { name: 'Puding Cokelat Alpukat', category: 'Camilan', age: '2-5 tahun', description: 'Puding lembut dari alpukat, tanpa gula tambahan.', nutrition: 'Lemak sehat untuk perkembangan otak.', emoji: '🥑' },
+            { name: 'Kentang Panggang Keju', category: 'Pauk', age: '2-5 tahun', description: 'Potongan kentang panggang dengan taburan keju.', nutrition: 'Karbohidrat kompleks dari kentang, kalsium dari keju.', emoji: '🥔🧀' },
+            { name: 'Sup Krim Jagung', category: 'Sayur & Pauk', age: '2-5 tahun', description: 'Sup krim jagung manis yang dihaluskan, tekstur lembut.', nutrition: 'Jagung mengandung karbohidrat dan serat.', emoji: '🌽' },
+            { name: 'Tofu Kukus Daging Cincang', category: 'Lauk', age: '2-5 tahun', description: 'Tofu kukus dengan topping daging cincang.', nutrition: 'Sumber protein nabati, daging sapi kaya zat besi.', emoji: '🥩' },
+            { name: 'Telur Orak-arik dengan Sayuran', category: 'Lauk', age: '2-5 tahun', description: 'Telur orak-arik dicampur potongan wortel dan bayam.', nutrition: 'Protein hewani dan vitamin dari sayuran.', emoji: '🍳🥬' },
+            { name: 'Bakso Ikan Kuah Bening', category: 'Lauk', age: '2-5 tahun', description: 'Bakso ikan homemade dengan kuah kaldu bening dan sayuran.', nutrition: 'Protein tinggi dan rendah lemak.', emoji: '🍲' },
+            { name: 'Mie Goreng Sehat', category: 'Pauk', age: '2-5 tahun', description: 'Mie yang dimasak dengan sedikit minyak dan banyak sayuran.', nutrition: 'Karbohidrat, serat, dan vitamin seimbang.', emoji: '🍜' },
+
+            // Resep untuk 6-8 tahun
+            { name: 'Pasta Saus Bolognese', category: 'Lauk & Pauk', age: '6-8 tahun', description: 'Pasta dengan saus tomat dan daging cincang.', nutrition: 'Kombinasi karbohidrat, protein, dan vitamin.', emoji: '🍝' },
+            { name: 'Sate Ayam Homemade', category: 'Lauk', age: '6-8 tahun', description: 'Sate ayam tanpa lemak yang dibakar dengan bumbu kacang.', nutrition: 'Protein tinggi untuk energi.', emoji: '🍢' },
+            { name: 'Nasi Ikan Kembung Balado', category: 'Lauk & Pauk', age: '6-8 tahun', description: 'Nasi dengan ikan kembung balado yang tidak terlalu pedas.', nutrition: 'Omega-3 dan protein dari ikan, zat besi dari balado.', emoji: '🍚🐟' },
+            { name: 'Capcay Kuah Bakso', category: 'Lauk & Sayur', age: '6-8 tahun', description: 'Tumisan aneka sayuran dengan bakso sapi kuah bening.', nutrition: 'Beragam vitamin, mineral, dan protein.', emoji: '🍲' },
+            { name: 'Roti Gandum Isi Telur Keju', category: 'Pauk', age: '6-8 tahun', description: 'Sandwich dari roti gandum dengan isian telur dan keju.', nutrition: 'Serat, protein, dan kalsium.', emoji: '🥪' },
+            { name: 'Sup Jagung Telur Puyuh', category: 'Lauk & Sayur', age: '6-8 tahun', description: 'Sup jagung manis dengan telur puyuh, rasa yang disukai anak.', nutrition: 'Kaya protein dan karbohidrat.', emoji: '🍲' },
+            { name: 'Gado-Gado Tanpa Lontong', category: 'Sayur', age: '6-8 tahun', description: 'Gado-gado dengan aneka sayuran, tahu, tempe, dan saus kacang.', nutrition: 'Sumber serat, vitamin, dan protein nabati.', emoji: '🥗' },
+            { name: 'Pepes Tahu Ikan', category: 'Lauk', age: '6-8 tahun', description: 'Pepes tahu dan ikan, dimasak dengan cara dikukus.', nutrition: 'Protein hewani dan nabati yang menyehatkan.', emoji: '🐟' },
+            { name: 'Perkedel Kentang Ayam', category: 'Pauk', age: '6-8 tahun', description: 'Perkedel kentang dengan campuran ayam cincang.', nutrition: 'Karbohidrat, protein, dan nutrisi penting lainnya.', emoji: '🥔' },
+            { name: 'Smoothie Buah dan Yoghurt', category: 'Camilan', age: '6-8 tahun', description: 'Minuman dari buah-buahan dan yoghurt rendah lemak.', nutrition: 'Vitamin, kalsium, dan probiotik.', emoji: '🥤' },
+
+            // Resep untuk 9-15 tahun
+            { name: 'Nasi Goreng Bumbu Ebi', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Nasi goreng dengan bumbu ebi, telur, dan sayuran.', nutrition: 'Kombinasi karbohidrat, protein, dan serat.', emoji: '🍚' },
+            { name: 'Ayam Goreng Mentega', category: 'Lauk', age: '9-15 tahun', description: 'Potongan ayam goreng dengan saus mentega yang lezat.', nutrition: 'Protein tinggi untuk pertumbuhan otot.', emoji: '🍗' },
+            { name: 'Tempe Mendoan', category: 'Lauk', age: '9-15 tahun', description: 'Tempe mendoan yang digoreng tidak terlalu kering.', nutrition: 'Protein nabati dari tempe.', emoji: '🫘' },
+            { name: 'Soto Ayam Bening', category: 'Lauk & Pauk', age: '9-15 tahun', description: 'Soto ayam dengan kuah bening, cocok untuk makan malam.', nutrition: 'Protein, karbohidrat, dan berbagai vitamin dari sayuran.', emoji: '🍲' },
+            { name: 'Cumi Goreng Tepung', category: 'Lauk', age: '9-15 tahun', description: 'Cumi-cumi yang digoreng dengan balutan tepung renyah.', nutrition: 'Protein hewani yang baik.', emoji: '🦑' },
+            { name: 'Kupat Tahu Bumbu Kacang', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Potongan ketupat, tahu, dan tauge dengan bumbu kacang.', nutrition: 'Karbohidrat, protein, dan serat.', emoji: '🥗' },
+            { name: 'Sayur Bening Bayam Jagung', category: 'Sayur', age: '9-15 tahun', description: 'Sayur bening bayam dengan jagung manis.', nutrition: 'Zat besi dan serat dari bayam, energi dari jagung.', emoji: '🥬🌽' },
+            { name: 'Beef Burger Homemade', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Burger buatan rumah dengan roti gandum dan daging sapi tanpa lemak.', nutrition: 'Protein, serat, dan nutrisi seimbang.', emoji: '🍔' },
+            { name: 'Bakmi Kuah Ayam', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Bakmi kuah dengan topping ayam suwir dan sayuran.', nutrition: 'Karbohidrat, protein, dan serat.', emoji: '🍜' },
+            { name: 'Telur Dadar Sayur Keju', category: 'Lauk', age: '9-15 tahun', description: 'Telur dadar dengan campuran sayuran dan keju parut.', nutrition: 'Protein tinggi dan kalsium.', emoji: '🍳🧀' },
+        ],
+        kurang: [
+            // Resep untuk 0-1 tahun
+            { name: 'Bubur Hati Ayam + Santan', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dengan hati ayam dan tambahan santan kental untuk meningkatkan kalori.', nutrition: 'Sumber zat besi, vitamin, dan lemak sehat untuk berat badan.', emoji: '🐔🥥' },
+            { name: 'Bubur Kacang Hijau + Santan', category: 'MPASI', age: '0-1 tahun', description: 'Bubur kacang hijau dengan santan untuk menambah kalori dan lemak sehat.', nutrition: 'Protein nabati dan lemak baik untuk menambah berat badan.', emoji: '🥣🥥' },
+            { name: 'Tim Daging Sapi + Keju', category: 'MPASI', age: '0-1 tahun', description: 'Tim nasi dengan daging sapi cincang dan keju parut untuk meningkatkan kalori.', nutrition: 'Protein, lemak, dan kalsium untuk pertumbuhan.', emoji: '🥩🧀' },
+            { name: 'Puree Kentang + Susu Formula', category: 'MPASI', age: '0-1 tahun', description: 'Puree kentang yang dicampur dengan susu formula untuk menambah kalori.', nutrition: 'Karbohidrat dan nutrisi tambahan dari susu formula.', emoji: '🥔🍼' },
+            { name: 'Bubur Ikan Lele + Minyak Zaitun', category: 'MPASI', age: '0-1 tahun', description: 'Bubur ikan lele dengan sedikit minyak zaitun untuk menambah kalori.', nutrition: 'Protein, Omega-3, dan lemak sehat.', emoji: '🐟🫒' },
+            { name: 'Bubur Tahu + Santan', category: 'MPASI', age: '0-1 tahun', description: 'Bubur nasi dengan tahu dan santan kental, sumber kalori dan protein nabati.', nutrition: 'Protein nabati dan lemak untuk penambah berat badan.', emoji: '🥣🥥' },
+            { name: 'Puree Ubi Ungu + Keju', category: 'MPASI', age: '0-1 tahun', description: 'Puree ubi ungu dengan keju, kaya karbohidrat, vitamin, dan kalsium.', nutrition: 'Karbohidrat kompleks dan kalsium yang tinggi.', emoji: '🍠🧀' },
+            { name: 'Tim Ayam + Santan', category: 'MPASI', age: '0-1 tahun', description: 'Tim nasi dengan ayam cincang dan santan kental untuk kalori ekstra.', nutrition: 'Protein dan lemak yang dibutuhkan untuk pertumbuhan.', emoji: '🍚🐔' },
+            { name: 'Puree Jagung Manis + Mentega', category: 'MPASI', age: '0-1 tahun', description: 'Puree jagung manis yang dicampur dengan mentega tawar.', nutrition: 'Karbohidrat dan lemak dari mentega untuk kalori.', emoji: '🌽🧈' },
+            { name: 'Bubur Ikan Gabus + Kaldu', category: 'MPASI', age: '0-1 tahun', description: 'Bubur nasi dengan ikan gabus dan kaldu kental untuk menambah nutrisi.', nutrition: 'Protein tinggi dan kalori yang dibutuhkan untuk pertumbuhan.', emoji: '🥣🐟' },
+
+            // Resep untuk 2-5 tahun
+            { name: 'Telur Orak-Arik + Keju', category: 'Lauk', age: '2-5 tahun', description: 'Telur orak-arik dicampur keju parut untuk protein dan kalori.', nutrition: 'Protein tinggi dari telur dan kalsium dari keju.', emoji: '🍳🧀' },
+            { name: 'Nasi Tim Ayam Jamur', category: 'Pauk & Lauk', age: '2-5 tahun', description: 'Nasi tim dengan ayam cincang, jamur, dan kuah kaldu kental.', nutrition: 'Karbohidrat, protein, dan kalori yang tinggi.', emoji: '🍚' },
+            { name: 'Puding Cokelat Susu', category: 'Camilan', age: '2-5 tahun', description: 'Puding dari susu full-cream dan cokelat, camilan tinggi kalori.', nutrition: 'Kalori dan kalsium untuk menambah berat badan.', emoji: '🍮' },
+            { name: 'Ayam Goreng Tepung', category: 'Lauk', age: '2-5 tahun', description: 'Ayam goreng tepung renyah, disajikan dengan nasi hangat.', nutrition: 'Protein tinggi dan kalori.', emoji: '🍗' },
+            { name: 'Nasi Kuning Telur dan Tempe Orek', category: 'Pauk & Lauk', age: '2-5 tahun', description: 'Nasi kuning dengan lauk telur dadar dan tempe orek.', nutrition: 'Karbohidrat, protein, dan lemak seimbang.', emoji: '🍚' },
+            { name: 'Sup Kacang Merah Daging', category: 'Lauk & Sayur', age: '2-5 tahun', description: 'Sup kacang merah dengan potongan daging sapi.', nutrition: 'Protein nabati dan hewani yang tinggi.', emoji: '🍲' },
+            { name: 'Roti Panggang Keju Madu', category: 'Pauk', age: '2-5 tahun', description: 'Roti panggang dengan lelehan keju dan madu.', nutrition: 'Karbohidrat, lemak, dan kalori yang tinggi.', emoji: '🍞🍯' },
+            { name: 'Martabak Mini Telur', category: 'Lauk', age: '2-5 tahun', description: 'Martabak telur dengan isian daging ayam cincang.', nutrition: 'Protein dan lemak untuk penambah berat badan.', emoji: '🥞' },
+            { name: 'Bubur Sumsum Pisang', category: 'Camilan', age: '2-5 tahun', description: 'Bubur sumsum dengan saus santan kental dan potongan pisang.', nutrition: 'Karbohidrat dan lemak dari santan.', emoji: '🥣🍌' },
+            { name: 'Makaroni Goreng', category: 'Pauk', age: '2-5 tahun', description: 'Makaroni yang digoreng dengan bumbu ringan, camilan tinggi kalori.', nutrition: 'Karbohidrat untuk energi.', emoji: '🍝' },
+            
+            // Resep untuk 6-8 tahun
+            { name: 'Ayam Goreng Madu', category: 'Lauk', age: '6-8 tahun', description: 'Ayam goreng yang dilumuri saus madu.', nutrition: 'Protein tinggi dan kalori ekstra dari madu.', emoji: '🍗🍯' },
+            { name: 'Bubur Kacang Hijau + Santan', category: 'Pauk & Lauk', age: '6-8 tahun', description: 'Bubur kacang hijau dengan santan kental.', nutrition: 'Protein nabati, serat, dan lemak sehat.', emoji: '🥣🥥' },
+            { name: 'Nasi Uduk dengan Telur Dadar', category: 'Pauk', age: '6-8 tahun', description: 'Nasi uduk dengan tambahan telur dadar dan bawang goreng.', nutrition: 'Karbohidrat dan lemak untuk penambah berat badan.', emoji: '🍚' },
+            { name: 'Mie Kuah Susu', category: 'Pauk', age: '6-8 tahun', description: 'Mie instan yang dimasak dengan susu full-cream, bukan air biasa.', nutrition: 'Karbohidrat, kalsium, dan kalori tinggi.', emoji: '🍜🥛' },
+            { name: 'Burger Daging Keju', category: 'Lauk & Pauk', age: '6-8 tahun', description: 'Burger homemade dengan daging sapi dan keju lezat.', nutrition: 'Protein, lemak, dan karbohidrat untuk energi.', emoji: '🍔' },
+            { name: 'Soto Betawi Kuah Santan', category: 'Lauk & Pauk', age: '6-8 tahun', description: 'Soto Betawi dengan kuah santan kental, daging, dan kentang.', nutrition: 'Lemak sehat dari santan, protein, dan karbohidrat.', emoji: '🍲🥥' },
+            { name: 'Telur Ceplok Bumbu Rendang', category: 'Lauk', age: '6-8 tahun', description: 'Telur ceplok yang dimasak dengan bumbu rendang.', nutrition: 'Protein tinggi, rempah-rempah yang baik untuk pencernaan.', emoji: '🍳' },
+            { name: 'Roti Bakar Isi Keju dan Cokelat', category: 'Camilan', age: '6-8 tahun', description: 'Roti tawar bakar dengan isian keju dan cokelat meses.', nutrition: 'Karbohidrat, lemak, dan kalori yang tinggi.', emoji: '🍞🍫' },
+            { name: 'Pizza Mini Sosis Keju', category: 'Pauk & Lauk', age: '6-8 tahun', description: 'Pizza mini dengan sosis, keju mozarella, dan saus tomat.', nutrition: 'Karbohidrat, protein, dan lemak.', emoji: '🍕' },
+            { name: 'Kue Lapis Daging Cincang', category: 'Lauk', age: '6-8 tahun', description: 'Lapis daging cincang dengan saus bumbu yang gurih.', nutrition: 'Protein tinggi dan kalori.', emoji: '🥩' },
+
+            // Resep untuk 9-15 tahun
+            { name: 'Mie Instan Kuah Susu', category: 'Pauk', age: '9-15 tahun', description: 'Mie instan yang dimasak dengan susu full-cream, bukan air biasa.', nutrition: 'Karbohidrat, kalsium, dan kalori tinggi.', emoji: '🍜🥛' },
+            { name: 'Nasi Goreng Daging dan Sosis', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Nasi goreng dengan isian daging dan sosis, porsi lebih besar.', nutrition: 'Kombinasi karbohidrat, protein, dan lemak yang tinggi.', emoji: '🍚🥩' },
+            { name: 'Ayam Kremes', category: 'Lauk', age: '9-15 tahun', description: 'Ayam goreng dengan kremesan yang renyah dan gurih.', nutrition: 'Protein tinggi, kalori, dan lemak.', emoji: '🍗' },
+            { name: 'Martabak Manis Keju Cokelat', category: 'Camilan', age: '9-15 tahun', description: 'Martabak manis dengan topping keju dan cokelat yang melimpah.', nutrition: 'Karbohidrat dan kalori tinggi.', emoji: '🥞🧀' },
+            { name: 'Bakso Kuah Mercon', category: 'Lauk & Pauk', age: '9-15 tahun', description: 'Bakso dengan kuah kaldu sapi kental dan sambal.', nutrition: 'Protein tinggi, karbohidrat, dan lemak.', emoji: '🍲🌶️' },
+            { name: 'Nasi Padang Komplit', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Nasi dengan rendang, telur balado, dan sambal hijau.', nutrition: 'Kalori dan protein yang tinggi.', emoji: '🍚' },
+            { name: 'Kue Cubit Cokelat Keju', category: 'Camilan', age: '9-15 tahun', description: 'Kue cubit setengah matang dengan topping cokelat dan keju.', nutrition: 'Karbohidrat dan lemak dari margarin.', emoji: '🧁' },
+            { name: 'Nasi Ayam Geprek', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Nasi dengan ayam goreng tepung yang digeprek dengan sambal.', nutrition: 'Karbohidrat, protein, dan kalori tinggi.', emoji: '🍗🌶️' },
+            { name: 'Sosis Bakar Mayones', category: 'Camilan', age: '9-15 tahun', description: 'Sosis yang dibakar dan diberi topping mayones.', nutrition: 'Protein dan lemak dari sosis dan mayones.', emoji: '🌭' },
+            { name: 'Spaghetti Carbonara', category: 'Pauk & Lauk', age: '9-15 tahun', description: 'Spaghetti dengan saus carbonara creamy dari keju dan susu.', nutrition: 'Karbohidrat dan kalori tinggi.', emoji: '🍝' },
+        ],
+        obesitas: [
+            // Resep untuk 0-1 tahun
+            { name: 'Bubur Brokoli Daging Ayam', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dengan daging ayam dan brokoli, tinggi protein dan serat.', nutrition: 'Protein tinggi untuk pertumbuhan tanpa lemak berlebih.', emoji: '🥦🐔' },
+            { name: 'Puree Apel Wortel', category: 'MPASI', age: '0-1 tahun', description: 'Puree dari apel dan wortel kukus tanpa tambahan gula.', nutrition: 'Serat tinggi dan vitamin alami.', emoji: '🍎🥕' },
+            { name: 'Bubur Hati Ayam tanpa Santan', category: 'MPASI', age: '0-1 tahun', description: 'Bubur nasi dengan hati ayam yang dimasak tanpa santan.', nutrition: 'Zat besi dan protein tanpa lemak jenuh.', emoji: '🐔' },
+            { name: 'Puree Labu Siam Tahu', category: 'MPASI', age: '0-1 tahun', description: 'Puree labu siam dan tahu yang dihaluskan, rendah kalori.', nutrition: 'Serat dan protein nabati.', emoji: '🎃' },
+            { name: 'Bubur Bayam Merah Ikan', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dengan bayam merah dan ikan kukus, kaya zat besi dan protein.', nutrition: 'Zat besi dan protein tinggi.', emoji: '🥬🐟' },
+            { name: 'Puree Pir Brokoli', category: 'MPASI', age: '0-1 tahun', description: 'Puree dari pir dan brokoli, tinggi serat dan vitamin.', nutrition: 'Vitamin C dan serat yang baik untuk pencernaan.', emoji: '🍐🥦' },
+            { name: 'Bubur Ayam Kampung Sayuran', category: 'MPASI', age: '0-1 tahun', description: 'Bubur dengan ayam kampung dan sayuran, rendah lemak.', nutrition: 'Protein tanpa lemak berlebih.', emoji: '🐔' },
+            { name: 'Puree Buncis Kacang Panjang', category: 'MPASI', age: '0-1 tahun', description: 'Puree dari buncis dan kacang panjang yang dihaluskan, tinggi serat.', nutrition: 'Serat untuk melancarkan pencernaan.', emoji: '🫛' },
+            { name: 'Tim Tempe Tahu', category: 'MPASI', age: '0-1 tahun', description: 'Tim yang dibuat dari tempe dan tahu, sumber protein nabati.', nutrition: 'Protein nabati yang rendah kalori.', emoji: '🫘' },
+            { name: 'Puree Pepaya Jeruk', category: 'MPASI', age: '0-1 tahun', description: 'Puree dari pepaya dan jeruk, tinggi serat dan vitamin C.', nutrition: 'Serat dan vitamin C yang alami.', emoji: '🍊' },
+
+            // Resep untuk 2-5 tahun
+            { name: 'Tumis Brokoli Wortel', category: 'Sayur', age: '2-5 tahun', description: 'Tumisan brokoli dan wortel dengan sedikit minyak.', nutrition: 'Kaya vitamin dan serat untuk mengontrol berat badan.', emoji: '🥦🥕' },
+            { name: 'Ikan Kukus dengan Sayuran', category: 'Lauk & Sayur', age: '2-5 tahun', description: 'Ikan kukus dengan bumbu ringan, disajikan bersama sayuran rebus.', nutrition: 'Protein tinggi dan Omega-3 tanpa lemak jenuh.', emoji: '🐟' },
+            { name: 'Sup Ikan dan Tahu Bening', category: 'Lauk', age: '2-5 tahun', description: 'Sup bening dengan ikan dan tahu, rendah kalori.', nutrition: 'Protein tinggi dan rendah lemak.', emoji: '🍲' },
+            { name: 'Ayam Rebus Sayuran', category: 'Lauk', age: '2-5 tahun', description: 'Potongan ayam rebus dengan sayuran seperti wortel dan buncis.', nutrition: 'Protein tanpa lemak berlebih.', emoji: '🍗🥬' },
+            { name: 'Tofu Panggang dengan Kecap Manis', category: 'Lauk', age: '2-5 tahun', description: 'Tofu panggang dengan sedikit kecap manis, sumber protein nabati.', nutrition: 'Protein nabati dan rendah kalori.', emoji: '⬜' },
+            { name: 'Nasi Merah Sup Oyong', category: 'Pauk & Sayur', age: '2-5 tahun', description: 'Nasi merah dengan sup oyong bening.', nutrition: 'Serat tinggi dari nasi merah dan sayuran.', emoji: '🍚🍲' },
+            { name: 'Telur Rebus dan Tomat', category: 'Lauk', age: '2-5 tahun', description: 'Telur rebus disajikan dengan irisan tomat segar.', nutrition: 'Protein tinggi dan vitamin.', emoji: '🥚🍅' },
+            { name: 'Salad Sayur dengan Dada Ayam', category: 'Lauk & Sayur', age: '2-5 tahun', description: 'Salad sayuran segar dengan potongan dada ayam panggang.', nutrition: 'Serat tinggi, vitamin, dan protein.', emoji: '🥗🍗' },
+            { name: 'Bubur Ayam dengan Air Kaldu', category: 'Pauk & Lauk', age: '2-5 tahun', description: 'Bubur ayam yang dimasak dengan air kaldu tanpa lemak.', nutrition: 'Protein dan karbohidrat yang rendah kalori.', emoji: '🥣' },
+            { name: 'Kentang Kukus Bumbu Lada Hitam', category: 'Pauk', age: '2-5 tahun', description: 'Kentang kukus yang diberi sedikit bumbu lada hitam.', nutrition: 'Karbohidrat kompleks tanpa lemak.', emoji: '🥔' },
+            
+            // Resep untuk 6-8 tahun
+            { name: 'Salad Sayur Buah', category: 'Sayur & Pauk', age: '6-8 tahun', description: 'Salad segar dari sayuran dan buah dengan saus yoghurt rendah lemak.', nutrition: 'Serat dan vitamin tanpa kalori berlebih.', emoji: '🥗🍎' },
+            { name: 'Ikan Kukus dengan Sayuran', category: 'Lauk & Sayur', age: '6-8 tahun', description: 'Ikan kukus dengan bumbu ringan, disajikan bersama sayuran rebus.', nutrition: 'Protein tinggi dan Omega-3 tanpa lemak jenuh.', emoji: '🐟' },
+            { name: 'Ayam Panggang Lemon', category: 'Lauk', age: '6-8 tahun', description: 'Dada ayam tanpa kulit dipanggang dengan perasan lemon.', nutrition: 'Protein tinggi dan rendah lemak.', emoji: '🍗🍋' },
+            { name: 'Gado-Gado Tanpa Lontong', category: 'Sayur', age: '6-8 tahun', description: 'Gado-gado dengan aneka sayuran, tahu, tempe, dan saus kacang.', nutrition: 'Serat, vitamin, dan protein nabati.', emoji: '🥗' },
+            { name: 'Sup Bening Ikan Nila', category: 'Lauk', age: '6-8 tahun', description: 'Sup bening ikan nila dengan sayuran seperti wortel dan labu siam.', nutrition: 'Protein dan vitamin tanpa lemak berlebih.', emoji: '🍲🐟' },
+            { name: 'Tumis Buncis Tahu', category: 'Sayur & Lauk', age: '6-8 tahun', description: 'Tumisan buncis dan tahu, rendah minyak.', nutrition: 'Serat tinggi dan protein nabati.', emoji: '🫛' },
+            { name: 'Urap Sayur Bumbu Kelapa', category: 'Sayur', age: '6-8 tahun', description: 'Sayuran rebus dengan bumbu urap kelapa yang tidak terlalu kental.', nutrition: 'Serat, mineral, dan vitamin.', emoji: '🥗' },
+            { name: 'Salad Buah Yoghurt', category: 'Camilan', age: '6-8 tahun', description: 'Potongan buah segar dengan yoghurt plain rendah lemak.', nutrition: 'Vitamin, mineral, dan probiotik.', emoji: '🍓🥣' },
+            { name: 'Pepes Ayam tanpa Santan', category: 'Lauk', age: '6-8 tahun', description: 'Pepes ayam yang dimasak tanpa santan.', nutrition: 'Protein tinggi tanpa lemak jenuh.', emoji: '🍗' },
+            { name: 'Telur Rebus dan Nasi Merah', category: 'Lauk & Pauk', age: '6-8 tahun', description: 'Nasi merah disajikan dengan telur rebus.', nutrition: 'Protein, serat, dan karbohidrat kompleks.', emoji: '🍚🥚' },
+
+            // Resep untuk 9-15 tahun
+            { name: 'Ikan Kukus dengan Sayuran', category: 'Lauk & Sayur', age: '9-15 tahun', description: 'Ikan kukus dengan bumbu ringan, disajikan bersama sayuran rebus.', nutrition: 'Protein tinggi dan Omega-3 tanpa lemak jenuh.', emoji: '🐟' },
+            { name: 'Salad Sayur Dada Ayam', category: 'Lauk & Sayur', age: '9-15 tahun', description: 'Salad sayuran segar dengan potongan dada ayam panggang.', nutrition: 'Serat tinggi, vitamin, dan protein.', emoji: '🥗🍗' },
+            { name: 'Tumis Tahu Tauge', category: 'Lauk & Sayur', age: '9-15 tahun', description: 'Tumisan tahu dan tauge, rendah minyak.', nutrition: 'Protein nabati dan serat.', emoji: '⬜' },
+            { name: 'Sup Bening Oyong Bakso Ikan', category: 'Lauk & Sayur', age: '9-15 tahun', description: 'Sup oyong dengan bakso ikan yang rendah lemak.', nutrition: 'Serat, protein, dan nutrisi penting lainnya.', emoji: '🍲🐟' },
+            { name: 'Nasi Merah Urap', category: 'Pauk & Sayur', age: '9-15 tahun', description: 'Nasi merah dengan lauk urap sayur, rendah kalori.', nutrition: 'Serat tinggi dan vitamin.', emoji: '🍚🥗' },
+            { name: 'Ayam Panggang Rosemary', category: 'Lauk', age: '9-15 tahun', description: 'Dada ayam tanpa kulit dipanggang dengan bumbu rosemary.', nutrition: 'Protein tinggi dan rendah lemak.', emoji: '🍗🌿' },
+            { name: 'Gado-Gado Porsi Kecil', category: 'Sayur', age: '9-15 tahun', description: 'Gado-gado dengan porsi kecil, fokus pada sayuran dan protein.', nutrition: 'Serat dan protein yang seimbang.', emoji: '🥗' },
+            { name: 'Telur Dadar Sayur Rebus', category: 'Lauk & Sayur', age: '9-15 tahun', description: 'Telur dadar dengan sayuran rebus, disajikan tanpa nasi.', nutrition: 'Protein tinggi dan vitamin.', emoji: '🍳🥬' },
+            { name: 'Smoothie Buah Naga', category: 'Camilan', age: '9-15 tahun', description: 'Minuman dari buah naga, pisang, dan yoghurt rendah lemak.', nutrition: 'Serat, vitamin, dan rendah kalori.', emoji: '🥤' },
+            { name: 'Kebab Mini Isi Sayuran', category: 'Lauk & Pauk', age: '9-15 tahun', description: 'Kebab dengan isian daging ayam tanpa lemak dan banyak sayuran.', nutrition: 'Protein dan serat yang menyehatkan.', emoji: '🥙' },
+        ]
+    };
+    
+    // Data Stimulasi yang Telah Diperbarui
+    const allStimulasi = {
+      '0-12': {
+        title: 'STIMULASI ANAK UMUR 0-12 bulan',
+        content: `
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 0-3 bulan</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Ajak bayi berbicara dan tersenyum.</li>
+              <li>Lakukan *tummy time* (posisi tengkurap) secara rutin.</li>
+              <li>Gantungkan mainan berwarna cerah di atas boks.</li>
+              <li>Pijat lembut tubuh bayi.</li>
+              <li>Dukung kepala bayi saat digendong.</li>
+              <li>Gerakkan mainan ke berbagai arah di depan wajahnya.</li>
+              <li>Respons cepat saat bayi menangis.</li>
+              <li>Biarkan bayi meraih jari Anda.</li>
+              <li>Putarkan musik yang menenangkan.</li>
+              <li>Ajak bayi berguling.</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 3-6 bulan</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Berikan mainan yang bisa digenggam dan berbunyi.</li>
+              <li>Bantu bayi duduk dengan penyangga.</li>
+              <li>Lakukan permainan "cilukba".</li>
+              <li>Ajak bayi merespons suara dengan senyuman atau ocehan.</li>
+              <li>Berikan cermin aman agar bayi dapat melihat dirinya.</li>
+              <li>Ajak anak meraih benda di dekatnya.</li>
+              <li>Berikan variasi benda dengan tekstur berbeda.</li>
+              <li>Bacakan buku bergambar sederhana.</li>
+              <li>Ajak bayi meniru ekspresi wajah Anda.</li>
+              <li>Latih bayi memindahkan benda dari satu tangan ke tangan lain.</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 6-9 bulan</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Sediakan ruang yang aman untuk merangkak atau merayap.</li>
+              <li>Berikan makanan pendamping ASI (MPASI) dengan berbagai tekstur.</li>
+              <li>Main petak umpet dengan mainan.</li>
+              <li>Ajak anak bermain dengan balok susun.</li>
+              <li>Perkenalkan kata-kata sederhana.</li>
+              <li>Ajak anak menirukan suara atau ekspresi wajah.</li>
+              <li>Berikan piring dan sendok kecil.</li>
+              <li>Berikan benda-benda yang bisa digabung dan dipisahkan.</li>
+              <li>Ajak anak bermain bola.</li>
+              <li>Ajak anak mendengarkan cerita.</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 9-12 bulan</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Ajak anak berdiri dan berjalan dengan bantuan.</li>
+              <li>Kenalkan berbagai kata sederhana.</li>
+              <li>Berikan mainan yang bisa disusun atau dimasukkan.</li>
+              <li>Ajak anak menirukan gerakan sederhana.</li>
+              <li>Berikan makanan yang bisa dipegang (finger food).</li>
+              <li>Ajak anak bermain di luar rumah.</li>
+              <li>Bantu anak belajar minum dari gelas.</li>
+              <li>Ajarkan anak menunjuk dan menunjukkan benda.</li>
+              <li>Bantu anak membedakan suara.</li>
+              <li>Berikan pujian saat anak berhasil.</li>
+            </ul>
+          </div>
+        `
+      },
+      '1-3': {
+        title: 'STIMULASI ANAK UMUR 1-3 TAHUN',
+        content: `
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 1-2 tahun</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Ajak anak menamai benda-benda di sekitar.</li>
+              <li>Ajak anak berjalan di permukaan yang berbeda.</li>
+              <li>Bacakan buku cerita interaktif.</li>
+              <li>Biarkan anak makan sendiri dengan sendok.</li>
+              <li>Ajak anak menggambar dan mencoret-coret.</li>
+              <li>Ajak anak menari atau bertepuk tangan mengikuti irama lagu.</li>
+              <li>Ajarkan anak membuang sampah di tempatnya.</li>
+              <li>Ajak anak bermain bola dengan cara melempar dan menangkap.</li>
+              <li>Berikan mainan balok susun.</li>
+              <li>Perkenalkan emosi dasar melalui ekspresi wajah.</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 2-3 tahun</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Ajari anak lagu-lagu sederhana dan gerakannya.</li>
+              <li>Ajak anak bermain peran.</li>
+              <li>Berikan mainan puzzle sederhana.</li>
+              <li>Ajak anak membantu pekerjaan rumah tangga ringan.</li>
+              <li>Ajarkan anak melompat dan berlari.</li>
+              <li>Ajak anak mewarnai buku gambar.</li>
+              <li>Kenalkan konsep "milik saya" dan "milik kamu".</li>
+              <li>Minta anak untuk menceritakan kembali cerita sederhana.</li>
+              <li>Ajak anak bermain dengan benda-benda yang melatih logika.</li>
+              <li>Ajarkan anak cara memakai dan melepas pakaian.</li>
+            </ul>
+          </div>
+        `
+      },
+      '3-6': {
+        title: 'STIMULASI ANAK UMUR 3-6 TAHUN',
+        content: `
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 3-4 tahun</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Ajak anak berhitung 1-10.</li>
+              <li>Ajari anak mengenali warna dan bentuk.</li>
+              <li>Ajak anak bermain di luar rumah.</li>
+              <li>Minta anak menceritakan kembali cerita yang baru saja dibacakan.</li>
+              <li>Perkenalkan konsep "sama" dan "tidak sama".</li>
+              <li>Ajak anak bermain dengan teman sebaya.</li>
+              <li>Ajarkan anak menggunting kertas.</li>
+              <li>Libatkan anak dalam kegiatan memasak sederhana.</li>
+              <li>Dorong anak untuk bertanya dan berdiskusi.</li>
+              <li>Ajarkan anak mencuci tangan dan sikat gigi sendiri.</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Usia 4-6 tahun</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 mt-2">
+              <li>Ajarkan anak menulis namanya sendiri.</li>
+              <li>Ajak anak melompat tali atau bermain permainan yang membutuhkan keseimbangan.</li>
+              <li>Ajak anak bermain peran yang lebih kompleks.</li>
+              <li>Perkenalkan huruf dan angka secara menyenangkan.</li>
+              <li>Ajak anak berinteraksi dengan teman sebaya dalam kelompok.</li>
+              <li>Berikan tugas sederhana untuk melatih tanggung jawab.</li>
+              <li>Latih anak memecahkan masalah sederhana.</li>
+              <li>Ajak anak membuat kerajinan tangan.</li>
+              <li>Dorong anak untuk mengekspresikan perasaannya dengan kata-kata.</li>
+              <li>Bacakan buku cerita yang lebih panjang.</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    // Data Parenting
+    const parentingData = {
+      '0-2': {
+        title: 'Parenting Anak Usia 0-2 Tahun',
+        content: `
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Pola Asuh: Membangun Ikatan</h4>
+            <p class="text-sm text-gray-600 mt-2">Pada usia ini, fokus utama adalah membangun <strong>ikatan emosional yang kuat</strong>. Responsif terhadap tangisan bayi dan sering memeluknya akan menumbuhkan rasa aman. Berinteraksi melalui sentuhan, tatapan mata, dan suara adalah cara terbaik.</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Komunikasi: Bicara Sederhana</h4>
+            <p class="text-sm text-gray-600 mt-2">Ajak bayi berbicara dengan nada yang ramah dan sederhana. Meskipun belum mengerti, ini penting untuk perkembangan bahasanya. Jelaskan apa yang sedang Anda lakukan, seperti "Bunda sedang mengganti popokmu".</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Kemandirian: Dorong Eksplorasi</h4>
+            <p class="text-sm text-gray-600 mt-2">Sediakan lingkungan yang aman agar anak bisa merangkak dan berjalan dengan leluasa. Dorong mereka untuk meraih mainan dan makan sendiri (saat sudah siap), ini melatih kemandirian dini.</p>
+          </div>
+        `
+      },
+      '3-6': {
+        title: 'Parenting Anak Usia 3-6 Tahun',
+        content: `
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Pola Asuh: Konsistensi dan Batasan</h4>
+            <p class="text-sm text-gray-600 mt-2">Anak pada usia ini mulai menguji batasan. Penting untuk <strong>konsisten</strong> dalam menerapkan aturan sederhana, seperti "Tidak boleh memukul". Berikan pujian saat mereka berperilaku baik dan jelaskan konsekuensi dari perilaku buruk.</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Komunikasi: Beri Pilihan</h4>
+            <p class="text-sm text-gray-600 mt-2">Ajak anak berdiskusi dan beri pilihan sederhana untuk melatih pengambilan keputusan. Misalnya, "Kamu mau pakai baju biru atau hijau?". Jawab pertanyaan mereka dengan sabar.</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Kemandirian: Libatkan Anak</h4>
+            <p class="text-sm text-gray-600 mt-2">Libatkan anak dalam tugas rumah tangga ringan, seperti membereskan mainan atau menyiapkan meja makan. Ini menumbuhkan rasa tanggung jawab dan kemandirian.</p>
+          </div>
+        `
+      },
+      '7-12': {
+        title: 'Parenting Anak Usia 7-12 Tahun',
+        content: `
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Pola Asuh: Menjadi Pendengar</h4>
+            <p class="text-sm text-gray-600 mt-2">Pada usia sekolah, anak mulai memiliki dunia sosial. Jadilah <strong>pendengar yang baik</strong> bagi cerita dan masalah mereka. Tetapkan waktu khusus setiap hari untuk berbicara dari hati ke hati.</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Komunikasi: Diskusi dan Respek</h4>
+            <p class="text-sm text-gray-600 mt-2">Gunakan komunikasi dua arah. Ajari anak untuk menghormati orang lain dan mengekspresikan pendapatnya dengan sopan. Bahas topik yang relevan dengan usia mereka, seperti pertemanan atau tugas sekolah.</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+            <h4 class="font-bold text-lg text-gray-800">Kemandirian: Tanggung Jawab Sekolah</h4>
+            <p class="text-sm text-gray-600 mt-2">Bantu anak untuk bertanggung jawab atas tugas dan PR sekolahnya. Berikan mereka kebebasan untuk mengatur waktu belajar, sambil tetap memberikan dukungan dan pengawasan.</p>
+          </div>
+        `
+      }
+    };
+
+    // Fungsi untuk memeriksa apakah semua input sudah terisi
+    function checkFormValidity() {
+        const isFormValid = Array.from(form.querySelectorAll('input[required]')).every(input => {
+            if (input.type === 'radio') {
+                const radios = form.querySelectorAll(`input[name="${input.name}"]`);
+                return Array.from(radios).some(radio => radio.checked);
+            }
+            return input.value.trim() !== '';
+        });
+
+        if (isFormValid) {
+            submitButton.disabled = false;
+            submitButton.classList.remove('bg-blue-300', 'cursor-not-allowed');
+            submitButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        } else {
+            submitButton.disabled = true;
+            submitButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            submitButton.classList.add('bg-blue-300', 'cursor-not-allowed');
+        }
+    }
+
+    // Fungsi untuk mensimulasikan hasil status gizi
+    function getStatusGizi(bb, tb, umur, jk) {
+      const imt = bb / ((tb / 100) * (tb / 100)); // Hitung IMT
+      let bbu, tbu, bbtb, imtu;
+
+      // Simulasi kategori BB/U
+      if (bb < 5) bbu = "Berat Badan Kurang";
+      else if (bb >= 5 && bb <= 10) bbu = "Normal";
+      else bbu = "Risiko Berat Badan Lebih";
+
+      // Simulasi kategori TB/U
+      if (tb < 60) tbu = "Pendek (Stunting)";
+      else if (tb >= 60 && tb <= 90) tbu = "Normal";
+      else tbu = "Tinggi";
+      
+      // Simulasi kategori BB/TB
+      if (imt < 15) bbtb = "Gizi Kurang";
+      else if (imt >= 15 && imt <= 20) bbtb = "Gizi Baik (Normal)";
+      else bbtb = "Obesitas";
+
+      // Simulasi kategori IMT/U
+      if (imt < 15) imtu = "Kurus";
+      else if (imt >= 15 && imt <= 20) imtu = "Normal";
+      else if (imt > 20 && imt <= 25) imtu = "Gizi Lebih (Overweight)";
+      else imtu = "Obesitas";
+
+      return { bbu, tbu, bbtb, imtu };
+    }
+
+    // Fungsi untuk memuat dan menampilkan resep berdasarkan kategori gizi dan usia
+    function loadRecipes(giziCategory, ageCategory) {
+      let content = '';
+      const recipesToDisplay = allRecipes[giziCategory];
+
+      const ageMap = {
+          '0-1 tahun': '0 - 1 Tahun',
+          '2-5 tahun': '2 - 5 Tahun',
+          '6-8 tahun': '6 - 8 Tahun',
+          '9-15 tahun': '9 - 15 Tahun'
+      };
+
+      if (!recipesToDisplay || recipesToDisplay.length === 0) {
+          recipesContainer.innerHTML = '<p class="text-gray-500 text-center">Belum ada resep untuk kategori ini.</p>';
+          return;
+      }
+      
+      // Filter recipes for the specific selected age category
+      const filteredRecipes = recipesToDisplay.filter(recipe => {
+          const ageGroupMatch = recipe.age.includes(ageCategory);
+          return ageGroupMatch;
+      });
+      
+      recipesTitle.textContent = `Resep Makanan ${giziCategory.charAt(0).toUpperCase() + giziCategory.slice(1)} untuk Usia ${ageMap[ageCategory]}`;
+      
+      if (filteredRecipes.length > 0) {
+        filteredRecipes.forEach(recipe => {
+          content += `
+            <div class="bg-gray-50 p-4 rounded-lg flex items-center mb-4 shadow-sm">
+              <span class="text-4xl mr-4">${recipe.emoji}</span>
+              <div>
+                <h4 class="font-bold text-lg text-gray-800">${recipe.name} (${recipe.category})</h4>
+                <p class="text-sm text-gray-600 mb-2">${recipe.description}</p>
+                <p class="text-xs text-gray-500">
+                  <span class="font-semibold">Panduan Gizi:</span> ${recipe.nutrition}
+                </p>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        content = `<p class="text-gray-500 text-center mt-4">Belum ada resep untuk kategori ini.</p>`;
+      }
+      recipesContainer.innerHTML = content;
+    }
+    
+    function loadStimulasi(ageCategory) {
+        const stimulasiData = allStimulasi[ageCategory];
+        stimulasiTitle.textContent = stimulasiData.title;
+        stimulasiContentContainer.innerHTML = stimulasiData.content;
+    }
+
+    function loadParentingContent(ageCategory) {
+        const content = parentingData[ageCategory];
+        if (content) {
+            parentingTitle.textContent = content.title;
+            parentingContentContainer.innerHTML = content.content;
+        } else {
+            parentingContentContainer.innerHTML = '<p class="text-gray-500 text-center">Konten belum tersedia untuk kategori ini.</p>';
+        }
+    }
+    
+    // Fungsi untuk menampilkan/menyembunyikan footer
+    function showFooter(footerElement) {
+      document.querySelectorAll('[id^="footer-"]').forEach(el => el.classList.add('hidden'));
+      if (footerElement) {
+        footerElement.classList.remove('hidden');
+      }
+    }
+
+
+    // Event listener untuk tombol "Usia 0-15 Tahun"
+    usiaCard.addEventListener('click', () => {
+      cardGridPage.classList.add('hidden');
+      dataFormPage.classList.remove('hidden');
+      showFooter(footerDataForm);
+      checkFormValidity();
+    });
+    
+    // Event listener untuk tombol "Tips Makanan Bergizi"
+    resepCard.addEventListener('click', () => {
+      cardGridPage.classList.add('hidden');
+      giziOptionsPage.classList.remove('hidden');
+      showFooter(footerGiziOptions);
+    });
+
+    // Event listener untuk tombol "STIMULASI"
+    stimulasiCard.addEventListener('click', () => {
+      cardGridPage.classList.add('hidden');
+      stimulasiOptionsPage.classList.remove('hidden');
+      showFooter(footerStimulasiOptions);
+    });
+
+    // Event listener untuk tombol "PARENTING"
+    parentingCard.addEventListener('click', () => {
+      cardGridPage.classList.add('hidden');
+      parentingOptionsPage.classList.remove('hidden');
+      showFooter(footerParentingOptions);
+    });
+
+    // Event listener untuk pilihan kategori gizi
+    document.querySelectorAll('.gizi-option').forEach(button => {
+        button.addEventListener('click', () => {
+            selectedGiziCategory = button.dataset.gizi;
+            giziOptionsPage.classList.add('hidden');
+            ageOptionsPage.classList.remove('hidden');
+            showFooter(footerAgeOptions);
+        });
+    });
+
+    // Event listener untuk pilihan usia resep
+    document.querySelectorAll('.age-option').forEach(button => {
+        button.addEventListener('click', () => {
+            const ageCategory = button.dataset.age;
+            ageOptionsPage.classList.add('hidden');
+            recipesPage.classList.remove('hidden');
+            showFooter(footerRecipes);
+            loadRecipes(selectedGiziCategory, ageCategory);
+        });
+    });
+
+    // Event listener untuk pilihan stimulasi
+    document.querySelectorAll('.stimulasi-option').forEach(button => {
+        button.addEventListener('click', () => {
+            const ageCategory = button.dataset.stimulasi;
+            stimulasiOptionsPage.classList.add('hidden');
+            stimulasiPage.classList.remove('hidden');
+            showFooter(footerStimulasi);
+            loadStimulasi(ageCategory);
+        });
+    });
+
+    // Event listener untuk pilihan usia parenting
+    document.querySelectorAll('.parenting-option').forEach(button => {
+        button.addEventListener('click', () => {
+            const ageCategory = button.dataset.parentingAge;
+            parentingOptionsPage.classList.add('hidden');
+            parentingPage.classList.remove('hidden');
+            showFooter(footerParenting);
+            loadParentingContent(ageCategory);
+        });
+    });
+
+    // Event listener untuk tombol "Kembali" dari form
+    backButton.addEventListener('click', () => {
+      dataFormPage.classList.add('hidden');
+      cardGridPage.classList.remove('hidden');
+      showFooter(footerCardGrid);
+      form.reset();
+      checkFormValidity();
+    });
+
+    // Event listener untuk form saat di-submit
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const umur = parseFloat(document.getElementById('umur').value);
+        const berat_badan = parseFloat(document.getElementById('berat_badan').value);
+        const tinggi_badan = parseFloat(document.getElementById('tinggi_badan').value);
+        const jenis_kelamin = document.querySelector('input[name="jenis_kelamin"]:checked').value;
+
+        const hasilGizi = getStatusGizi(berat_badan, tinggi_badan, umur, jenis_kelamin);
+
+        document.getElementById('bbu_hasil').textContent = hasilGizi.bbu;
+        document.getElementById('tbu_hasil').textContent = hasilGizi.tbu;
+        document.getElementById('bbtb_hasil').textContent = hasilGizi.bbtb;
+        document.getElementById('imtu_hasil').textContent = hasilGizi.imtu;
+
+        dataFormPage.classList.add('hidden');
+        resultPage.classList.remove('hidden');
+        showFooter(footerResult);
+    });
+
+    // Event listener untuk tombol "Kembali ke Beranda" dari hasil
+    backToHomeFromResult.addEventListener('click', () => {
+      resultPage.classList.add('hidden');
+      cardGridPage.classList.remove('hidden');
+      showFooter(footerCardGrid);
+      form.reset();
+      checkFormValidity();
+    });
+    
+    // Event listener untuk tombol "Kembali ke Beranda" dari opsi gizi
+    backToHomeFromGiziOptions.addEventListener('click', () => {
+      giziOptionsPage.classList.add('hidden');
+      cardGridPage.classList.remove('hidden');
+      showFooter(footerCardGrid);
+    });
+
+    // Event listener untuk tombol "Kembali" dari halaman pilihan usia
+    backToGiziOptionsFromAge.addEventListener('click', () => {
+      ageOptionsPage.classList.add('hidden');
+      giziOptionsPage.classList.remove('hidden');
+      showFooter(footerGiziOptions);
+    });
+
+    // Event listener untuk tombol "Kembali ke Opsi Usia" dari resep
+    backToAgeOptionsButton.addEventListener('click', () => {
+      recipesPage.classList.add('hidden');
+      ageOptionsPage.classList.remove('hidden');
+      showFooter(footerAgeOptions);
+    });
+
+    // Event listener untuk tombol "Kembali ke Beranda" dari opsi stimulasi
+    backToHomeFromStimulasiOptions.addEventListener('click', () => {
+      stimulasiOptionsPage.classList.add('hidden');
+      cardGridPage.classList.remove('hidden');
+      showFooter(footerCardGrid);
+    });
+
+    // Event listener untuk tombol "Kembali ke Opsi Stimulasi" dari halaman stimulasi
+    backToStimulasiOptionsButton.addEventListener('click', () => {
+      stimulasiPage.classList.add('hidden');
+      stimulasiOptionsPage.classList.remove('hidden');
+      showFooter(footerStimulasiOptions);
+    });
+
+    // Event listener untuk tombol "Kembali ke Beranda" dari opsi parenting
+    backToHomeFromParentingOptions.addEventListener('click', () => {
+      parentingOptionsPage.classList.add('hidden');
+      cardGridPage.classList.remove('hidden');
+      showFooter(footerCardGrid);
+    });
+
+    // Event listener untuk tombol "Kembali ke Opsi Usia" dari halaman parenting
+    backToParentingOptionsButton.addEventListener('click', () => {
+      parentingPage.classList.add('hidden');
+      parentingOptionsPage.classList.remove('hidden');
+      showFooter(footerParentingOptions);
+    });
+
+    // Event listener untuk setiap input pada form
+    inputs.forEach(input => {
+        input.addEventListener('input', checkFormValidity);
+        input.addEventListener('change', checkFormValidity);
+    });
+
+    // Event listener untuk elemen hasil pada halaman "HASIL"
+    document.querySelectorAll('[data-kategori]').forEach(element => {
+        element.addEventListener('click', () => {
+            const hasilTeks = element.querySelector('p').textContent; // Mengambil teks dari elemen <p>
+            
+            const info = explanations[hasilTeks];
+            if (info) {
+                modalTitle.textContent = info.title;
+                modalContent.textContent = info.text;
+                infoModal.classList.remove('hidden');
+            }
+        });
+    });
+
+    // Event listener untuk menutup modal
+    closeModalButton.addEventListener('click', () => {
+      infoModal.classList.add('hidden');
+    });
+
+    // Menutup modal saat mengklik di luar area modal
+    infoModal.addEventListener('click', (event) => {
+      if (event.target === infoModal) {
+        infoModal.classList.add('hidden');
+      }
+    });
+
+    // Panggil fungsi validasi saat halaman dimuat
+    checkFormValidity();
+    showFooter(footerCardGrid);
+  </script>
+
+</body>
+</html>
+
 
     <div id="stimulasi-card" class="bg-white rounded-2xl p-8 flex flex-col items-center shadow-[0_8px_24px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-lg transition-shadow duration-300">
       <i class="fas fa-lightbulb text-purple-500 text-6xl mb-6"></i>
